@@ -1,19 +1,25 @@
 package ziibd.project.employee;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import ziibd.project.department.Department;
+
+import javax.persistence.*;
 import java.util.Date;
 
 @Entity
 @Table(name="EMPLOYEES")
 public class Employee {
 
-    //Pola
+    //Pola (Kolumny z tabeli EMPLOYEES)
+    //Klucz główny
     @Id
     @Column(name = "EMPLOYEE_ID")
     private Integer id;
+    //Klucze obce
+    @ManyToOne
+    @JoinColumn(name="DEPARTMENT_ID",referencedColumnName="DEPARTMENT_ID")
+    private Department dept;
+    //Pozostałe kolumny
     @Column(name = "FIRST_NAME")
     private String firstName;
     @Column(name = "LAST_NAME")
@@ -32,13 +38,11 @@ public class Employee {
     private Integer comm;
     @Column(name = "MANAGER_ID")
     private Integer mgr;
-    @Column(name = "DEPARTMENT_ID")
-    private Integer dept;
 
     //Konstruktory
     public Employee() {}
 
-    public Employee(int id, String firstName, String lastName, String email, String phone, Date date, String job, int salary, int comm, int mgr, int dept) {
+    public Employee(int id, String firstName, String lastName, String email, String phone, Date date, String job, int salary, int comm, int mgr, Department dept) {
         this.id=id;
         this.firstName=firstName;
         this.lastName=lastName;
@@ -133,11 +137,11 @@ public class Employee {
         this.mgr = mgr;
     }
 
-    public Integer getDept() {
+    public Department getDept() {
         return dept;
     }
 
-    public void setDept(Integer dept) {
+    public void setDept(Department dept) {
         this.dept = dept;
     }
 
