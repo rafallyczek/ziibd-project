@@ -1,7 +1,7 @@
 package ziibd.project.employee;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import ziibd.project.department.Department;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -15,11 +15,9 @@ public class Employee {
     @Id
     @Column(name = "EMPLOYEE_ID")
     private Integer id;
-    //Klucze obce
-    @ManyToOne
-    @JoinColumn(name="DEPARTMENT_ID",referencedColumnName="DEPARTMENT_ID")
-    private Department dept;
     //Pozostałe kolumny
+    @Column(name = "DEPARTMENT_ID")
+    private Integer dept;
     @Column(name = "FIRST_NAME")
     private String firstName;
     @Column(name = "LAST_NAME")
@@ -29,6 +27,8 @@ public class Employee {
     @Column(name = "PHONE_NUMBER")
     private String phone;
     @Column(name = "HIRE_DATE")
+    @DateTimeFormat(pattern = "YY/MM/DD")
+    @JsonFormat(pattern = "yy/MM/dd")
     private Date date;
     @Column(name = "JOB_ID")
     private String job;
@@ -42,7 +42,7 @@ public class Employee {
     //Konstruktory
     public Employee() {}
 
-    public Employee(int id, String firstName, String lastName, String email, String phone, Date date, String job, int salary, int comm, int mgr, Department dept) {
+    public Employee(int id, String firstName, String lastName, String email, String phone, Date date, String job, int salary, int comm, int mgr, int dept) {
         this.id=id;
         this.firstName=firstName;
         this.lastName=lastName;
@@ -137,12 +137,11 @@ public class Employee {
         this.mgr = mgr;
     }
 
-    public Department getDept() {
+    public Integer getDept() {
         return dept;
     }
 
-    public void setDept(Department dept) {
+    public void setDept(Integer dept) {
         this.dept = dept;
     }
-
 }

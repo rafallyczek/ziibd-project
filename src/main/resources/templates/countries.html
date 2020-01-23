@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/countries.css"/>
+</head>
+<body>
+<div class="container">
+    <div class="header"><h1>PROJEKT ZIIBD</h1></div>
+    <ul class="menu">
+        <li>Państwa</li>
+        <li>Departamenty</li>
+        <li>Pracownicy</li>
+        <li>Prace</li>
+        <li>Stopnie Pracy</li>
+        <li>Historie Prac</li>
+        <li>Lokacje</li>
+        <li>Regiony</li>
+    </ul>
+    <div class="tableHeader"><h2>Państwa</h2></div>
+
+    <div class="columnNames">
+        <div class="countryTagCol">ID</div>
+        <div class="countryNameCol">PAŃSTWO</div>
+        <div class="countryRegionCol">REGION</div>
+        <div style="clear: both;"></div>
+    </div>
+    <div class="result" th:each="country : ${countries}">
+        <div class="countryTag" th:text="${country.id}"></div>
+        <div class="countryName" th:text="${country.name}"></div>
+        <div class="countryRegion" th:text="${country.reg}"></div>
+        <div style="clear: both;"></div>
+    </div>
+</div>
+</body>
+</html>

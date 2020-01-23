@@ -1,7 +1,5 @@
 package ziibd.project.department;
 
-import ziibd.project.employee.Employee;
-
 import javax.persistence.*;
 
 @Entity
@@ -9,9 +7,11 @@ import javax.persistence.*;
 public class Department {
 
     //Pola (Kolumny z tabeli DEPARTMENTS)
+    //Klucz główny
     @Id
     @Column(name="DEPARTMENT_ID")
     private Integer id;
+    //Pozostałe kolumny
     @Column(name="DEPARTMENT_NAME")
     private String name;
     @Column(name="LOCATION_ID")
