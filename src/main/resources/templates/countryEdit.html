@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/countryEdit.css"/>
+</head>
+<body>
+<div class="container">
+    <div class="header"><h1>PROJEKT ZIIBD</h1></div>
+    <div class="tableHeader"><h2>Edytuj Państwo</h2></div>
+    <div class="edit">
+        <form th:action="@{/edit}" th:object="${retrievedcountry}" method="post">
+            <input placeholder="Id" class="countryTag" type="text" th:field="*{id}"/>
+            <input placeholder="Nazwa państwa" class="countryName" type="text" th:field="*{name}"/>
+            <input placeholder="Id regionu" class="countryRegion" type="number" th:field="*{reg}"/>
+            <div style="clear: both;"></div>
+            <input class="input" type="submit" value="Zatwierdź"/>
+            <input class="input" type="reset" value="Resetuj"/>
+            <a th:href="@{/countries}" class="comebackButton">Powrót</a>
+        </form>
+    </div>
+</div>
+</body>
+</html>

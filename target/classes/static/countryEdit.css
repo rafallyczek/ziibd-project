@@ -1,0 +1,116 @@
+body{
+    background-color: #505050;
+    color: #ffffff;
+}
+.container{
+    margin-left: auto;
+    margin-right: auto;
+    width: 1000px;
+}
+h1{
+    text-align: center;
+    margin: 10px 0;
+}
+h2{
+    text-align: center;
+    margin: 0;
+}
+.header{
+    width: 980px;
+    background-color: #404040;
+    padding: 10px;
+    border-bottom: 1px solid #202020;
+}
+.tableHeader{
+    width: 980px;
+    background-color: #404040;
+    padding: 10px;
+    margin-bottom: 5px;
+}
+.edit{
+    width: 980px;
+    background-color: #404040;
+    padding: 10px;
+    margin-bottom: 20px;
+    position: relative;
+}
+.countryTag{
+    width: 40px;
+    background-color: #303030;
+    padding: 10px;
+    float: left;
+    margin-left: 5px;
+    border: none;
+    color: white;
+}
+.countryName{
+    width: 800px;
+    background-color: #303030;
+    padding: 10px;
+    float: left;
+    margin-left: 5px;
+    border: none;
+    color: white;
+}
+.countryRegion{
+    width: 60px;
+    background-color: #303030;
+    padding: 10px;
+    float: left;
+    margin-left: 5px;
+    border: none;
+    color: white;
+}
+.input{
+    margin-top: 10px;
+    margin-left: 5px;
+    background-color: #303030;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    color: white;
+}
+.input:hover{
+    background-color: #2476d4;
+    text-shadow: 1px 1px black;
+}
+.input:last-of-type:hover{
+    background-color: #b52626;
+    text-shadow: 1px 1px black;
+}
+.input:last-of-type{
+    margin-right: 5px;
+}
+/* Chowanie strzałek pola input number w Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+/* Chowanie strzałek pola input number w Firefox */
+input[type=number] {
+    -moz-appearance:textfield;
+}
+.comebackButton{
+    height: 15px;
+    width: 45px;
+    background-color: #303030;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    position: absolute;
+    right: 15px;
+    bottom: 10px;
+    text-align: center;
+}
+.comebackButton:hover{
+    background-color: #2476d4;
+    text-shadow: 1px 1px black;
+}
+a{
+    text-decoration: none;
+    color: white;
+}

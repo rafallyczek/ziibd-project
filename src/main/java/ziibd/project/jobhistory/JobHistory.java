@@ -3,14 +3,12 @@ package ziibd.project.jobhistory;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import org.springframework.format.annotation.DateTimeFormat;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.Date;
 
 @Entity
 @Table(name="JOB_HISTORY")
+@IdClass(JobHistoryId.class)
 public class JobHistory {
 
     //Pola (Kolumny z tabeli EMPLOYEES)
@@ -18,10 +16,11 @@ public class JobHistory {
     @Id
     @Column(name = "EMPLOYEE_ID")
     private Integer id;
-    //Pozostałe kolumny
+    @Id
     @Column(name = "START_DATE")
     @DateTimeFormat(pattern = "YY/MM/DD")
     private Date startDate;
+    //Pozostałe kolumny
     @Column(name = "END_DATE")
     @DateTimeFormat(pattern = "YY/MM/DD")
     @JsonFormat(pattern = "YY/MM/dd")

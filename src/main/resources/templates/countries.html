@@ -21,19 +21,31 @@
     <div class="tableHeader"><h2>Państwa</h2></div>
 
     <div class="columnNames">
-        <div class="countryTagCol">ID</div>
-        <div class="countryNameCol">PAŃSTWO</div>
-        <div class="countryRegionCol">REGION</div>
+        <div class="countryTag">ID</div>
+        <div class="countryName">PAŃSTWO</div>
+        <div class="countryRegion">REGION</div>
         <div style="clear: both;"></div>
     </div>
     <div class="result" th:each="country : ${countries}">
         <div class="countryTag" th:text="${country.id}"></div>
         <div class="countryName" th:text="${country.name}"></div>
         <div class="countryRegion" th:text="${country.reg}"></div>
-        <div class="countryDelete">
+        <div class="countryDeleteOrEdit">
             <a th:href="@{/delete/{id}(id=${country.id})}" class="deleteButton">Usuń</a>
+            <a th:href="@{/edit/{id}(id=${country.id})}" class="editButton">Edytuj</a>
         </div>
         <div style="clear: both;"></div>
+    </div>
+    <div class="add">
+        <form th:action="@{/add}" th:object="${country}" method="post">
+            <h3>Dodaj państwo</h3>
+            <input placeholder="Id" class="countryTag" type="text" th:field="*{id}"/>
+            <input placeholder="Nazwa państwa" class="countryName" type="text" th:field="*{name}"/>
+            <input placeholder="Id regionu" class="countryRegion" type="number" th:field="*{reg}"/>
+            <div style="clear: both;"></div>
+            <input class="input" type="submit" value="Dodaj"/>
+            <input class="input" type="reset" value="Resetuj"/>
+        </form>
     </div>
 </div>
 </body>

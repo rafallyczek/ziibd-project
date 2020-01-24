@@ -7,13 +7,17 @@ body{
     margin-right: auto;
     width: 1000px;
 }
+h1{
+    text-align: center;
+    margin: 10px 0;
+}
 h2{
     text-align: center;
     margin: 0;
 }
-h1{
+h3{
     text-align: center;
-    margin: 10px 0;
+    margin: 0 0 10px 0;
 }
 .header{
     width: 980px;
@@ -33,10 +37,12 @@ h1{
     list-style-type: none;
     display: inline-block;
     width: 114px;
-    padding: 5px;
+    height: 20px;
+    padding: 8px 5px 5px 5px;
     font-size: 15px;
     border-right: 1px dashed #202020;
     text-align: center;
+    cursor: pointer;
 }
 .menu > li:last-child{
     border-right: none;
@@ -59,31 +65,11 @@ h1{
     padding: 10px;
     border-bottom: 1px dashed #202020;
 }
-.countryTagCol{
-    width: 40px;
-    background-color: #303030;
-    padding: 10px;
-    float: left;
-    margin-left: 5px;
-}
-.countryNameCol{
-    width: 800px;
-    background-color: #303030;
-    padding: 10px;
-    float: left;
-    margin-left: 5px;
-}
-.countryRegionCol{
-    width: 60px;
-    background-color: #303030;
-    padding: 10px;
-    float: left;
-    margin-left: 5px;
-}
 .result{
     width: 980px;
     background-color: #404040;
     padding: 10px;
+    margin-bottom: 5px;
     position: relative;
 }
 .countryTag{
@@ -92,6 +78,8 @@ h1{
     padding: 10px;
     float: left;
     margin-left: 5px;
+    border: none;
+    color: white;
 }
 .countryName{
     width: 800px;
@@ -99,6 +87,8 @@ h1{
     padding: 10px;
     float: left;
     margin-left: 5px;
+    border: none;
+    color: white;
 }
 .countryRegion{
     width: 60px;
@@ -106,20 +96,23 @@ h1{
     padding: 10px;
     float: left;
     margin-left: 5px;
+    border: none;
+    color: white;
 }
-.countryDelete{
-    width: 70px;
+.countryDeleteOrEdit{
+    width: 200px;
     height: 38px;
     float: left;
     position: absolute;
-    right: -50px;
+    right: -200px;
 }
 .deleteButton{
-    height: 36px;
+    height: 16px;
+    width: 35px;
     background-color: #303030;
     padding: 10px;
     position: absolute;
-    right: -10px;
+    left: 10px;
     top: 1px;
     border: none;
     border-radius: 5px;
@@ -128,12 +121,85 @@ h1{
 }
 .deleteButton:hover{
     background-color: #b52626;
-    font-weight: bold;
+    text-shadow: 1px 1px black;
 }
 .result:hover .deleteButton{
     visibility: visible;
 }
-.countryDelete:hover .deleteButton{
+.countryDeleteOrEdit:hover .deleteButton{
     visibility: visible;
 }
+.editButton{
+    height: 16px;
+    width: 40px;
+    background-color: #303030;
+    padding: 10px;
+    position: absolute;
+    left: 70px;
+    top: 1px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    visibility: hidden;
+}
+.editButton:hover{
+    background-color: #2476d4;
+    text-shadow: 1px 1px black;
+}
+.result:hover .editButton{
+    visibility: visible;
+}
+.countryDeleteOrEdit:hover .editButton{
+    visibility: visible;
+}
+a{
+    text-decoration: none;
+    color: white;
+}
+.add{
+    width: 980px;
+    background-color: #404040;
+    padding: 10px;
+}
+.input{
+    margin-top: 10px;
+    margin-left: 5px;
+    background-color: #303030;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    color: white;
+}
+.input:hover{
+    background-color: #2476d4;
+    text-shadow: 1px 1px black;
+}
+.input:last-of-type:hover{
+    background-color: #b52626;
+    text-shadow: 1px 1px black;
+}
 
+/* Chowanie strzałek pola input number w Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+/* Chowanie strzałek pola input number w Firefox */
+input[type=number] {
+    -moz-appearance:textfield;
+}
+/* Kolor placeholdera w Chrome, Firefox, Opera, Safari 10.1+, Firefox */
+::placeholder {
+    color: #505050;
+    opacity: 1;
+}
+/* Kolor placeholdera w Internet Explorer 10-11 */
+:-ms-input-placeholder {
+    color: #505050;
+}
+/* Kolor placeholdera w Microsoft Edge */
+::-ms-input-placeholder {
+    color: #505050;
+}
