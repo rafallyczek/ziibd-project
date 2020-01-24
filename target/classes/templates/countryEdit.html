@@ -11,7 +11,7 @@
     <div class="tableHeader"><h2>Edytuj Państwo</h2></div>
     <div class="edit">
         <form th:action="@{/edit}" th:object="${retrievedcountry}" method="post">
-            <input placeholder="Id" class="countryTag" type="text" th:field="*{id}"/>
+            <input placeholder="Id" class="countryTag" type="text" th:field="*{id}" disabled/>
             <input placeholder="Nazwa państwa" class="countryName" type="text" th:field="*{name}"/>
             <input placeholder="Id regionu" class="countryRegion" type="number" th:field="*{reg}"/>
             <div style="clear: both;"></div>
