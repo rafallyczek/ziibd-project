@@ -30,6 +30,9 @@
         <div class="countryTag" th:text="${country.id}"></div>
         <div class="countryName" th:text="${country.name}"></div>
         <div class="countryRegion" th:text="${country.reg}"></div>
+        <div class="countryDelete">
+            <a th:href="@{/delete/{id}(id=${country.id})}" class="deleteButton">Usuń</a>
+        </div>
         <div style="clear: both;"></div>
     </div>
 </div>

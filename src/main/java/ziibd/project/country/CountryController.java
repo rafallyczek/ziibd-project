@@ -39,11 +39,13 @@ public class CountryController {
     public void updateCountry(@RequestBody Country country, @PathVariable int id){
         countryService.updateCountry(country);
     }
+    */
 
     @Transactional
-    @DeleteMapping("/countries/{id}")
-    public void deleteCountry(@PathVariable String id){
+    @RequestMapping("/delete/{id}")
+    public String deleteCountry(@PathVariable String id){
         countryService.deleteCountry(id);
-    }*/
+        return "redirect:/countries";
+    }
 
 }

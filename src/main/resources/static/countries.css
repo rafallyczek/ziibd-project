@@ -84,6 +84,7 @@ h1{
     width: 980px;
     background-color: #404040;
     padding: 10px;
+    position: relative;
 }
 .countryTag{
     width: 40px;
@@ -105,5 +106,34 @@ h1{
     padding: 10px;
     float: left;
     margin-left: 5px;
+}
+.countryDelete{
+    width: 70px;
+    height: 38px;
+    float: left;
+    position: absolute;
+    right: -50px;
+}
+.deleteButton{
+    height: 36px;
+    background-color: #303030;
+    padding: 10px;
+    position: absolute;
+    right: -10px;
+    top: 1px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    visibility: hidden;
+}
+.deleteButton:hover{
+    background-color: #b52626;
+    font-weight: bold;
+}
+.result:hover .deleteButton{
+    visibility: visible;
+}
+.countryDelete:hover .deleteButton{
+    visibility: visible;
 }
 
