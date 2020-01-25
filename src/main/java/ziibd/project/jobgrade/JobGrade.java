@@ -10,11 +10,12 @@ import java.util.Date;
 @Table(name="JOB_GRADES")
 public class JobGrade {
 
-    //Pola (Kolumny z tabeli EMPLOYEES)
+    //Pola (Kolumny z tabeli JOB_GRADES)
     //Klucz główny
     @Id
     @Column(name = "GRADE_LEVEL")
     private String id;
+
     //Pozostałe kolumny
     @Column(name = "LOWEST_SAL")
     private Integer lowestSal;

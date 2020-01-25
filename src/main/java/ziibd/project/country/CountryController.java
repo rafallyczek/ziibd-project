@@ -6,7 +6,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.transaction.Transactional;
-import java.util.List;
 
 @Controller
 public class CountryController {
@@ -19,25 +18,25 @@ public class CountryController {
     public String getCountries(Model model) {
         model.addAttribute("countries",countryService.getCountries());
         model.addAttribute("country",new Country());
-        return "countries";
+        return "countries/countries";
     }
 
     //Dodaj państwo
-    @PostMapping("/add")
+    @PostMapping("/addCountry")
     public String addCountry(@ModelAttribute("country") Country country){
         countryService.addCountry(country);
         return "redirect:/countries";
     }
 
     //Pobierz i zapisz państwo o zadanym id i zwróć widok edycji państwa
-    @RequestMapping("/edit/{id}")
+    @RequestMapping("/editCountry/{id}")
     public String updateCountryById(@PathVariable String id, Model model){
         model.addAttribute("retrievedcountry",countryService.getCountry(id));
-        return "countryEdit";
+        return "countries/countryEdit";
     }
 
     //Edytuj państwo
-    @PostMapping("/edit")
+    @PostMapping("/editCountry")
     public String updateCountry(@ModelAttribute("retrievedcountry") Country country){
         countryService.updateCountry(country);
         return "redirect:/countries";
@@ -45,7 +44,7 @@ public class CountryController {
 
     //Usuń państwo
     @Transactional
-    @RequestMapping("/delete/{id}")
+    @RequestMapping("/deleteCountry/{id}")
     public String deleteCountry(@PathVariable String id){
         countryService.deleteCountry(id);
         return "redirect:/countries";

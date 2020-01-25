@@ -2,6 +2,9 @@ package ziibd.project.employee;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import org.springframework.format.annotation.DateTimeFormat;
+import ziibd.project.department.Department;
+import ziibd.project.job.Job;
+import ziibd.project.region.Region;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -15,9 +18,14 @@ public class Employee {
     @Id
     @Column(name = "EMPLOYEE_ID")
     private Integer id;
+
     //Pozostałe kolumny
-    @Column(name = "DEPARTMENT_ID")
+    @Column(name="DEPARTMENT_ID")
     private Integer dept;
+    @Column(name="JOB_ID")
+    private Integer job;
+    @Column(name="MANAGER_ID")
+    private Integer mgr;
     @Column(name = "FIRST_NAME")
     private String firstName;
     @Column(name = "LAST_NAME")
@@ -30,19 +38,15 @@ public class Employee {
     @DateTimeFormat(pattern = "YY/MM/DD")
     @JsonFormat(pattern = "yy/MM/dd")
     private Date date;
-    @Column(name = "JOB_ID")
-    private String job;
     @Column(name = "SALARY")
     private Integer salary;
     @Column(name = "COMMISSION_PCT")
     private Integer comm;
-    @Column(name = "MANAGER_ID")
-    private Integer mgr;
 
     //Konstruktory
     public Employee() {}
 
-    public Employee(int id, String firstName, String lastName, String email, String phone, Date date, String job, int salary, int comm, int mgr, int dept) {
+    public Employee(int id, String firstName, String lastName, String email, String phone, Date date, int job, int salary, int comm, int mgr, int dept) {
         this.id=id;
         this.firstName=firstName;
         this.lastName=lastName;
@@ -105,14 +109,6 @@ public class Employee {
         this.date = date;
     }
 
-    public String getJob() {
-        return job;
-    }
-
-    public void setJob(String job) {
-        this.job = job;
-    }
-
     public Integer getSalary() {
         return salary;
     }
@@ -129,19 +125,27 @@ public class Employee {
         this.comm = comm;
     }
 
-    public Integer getMgr() {
-        return mgr;
-    }
-
-    public void setMgr(Integer mgr) {
-        this.mgr = mgr;
-    }
-
     public Integer getDept() {
         return dept;
     }
 
     public void setDept(Integer dept) {
         this.dept = dept;
+    }
+
+    public Integer getJob() {
+        return job;
+    }
+
+    public void setJob(Integer job) {
+        this.job = job;
+    }
+
+    public Integer getMgr() {
+        return mgr;
+    }
+
+    public void setMgr(Integer mgr) {
+        this.mgr = mgr;
     }
 }

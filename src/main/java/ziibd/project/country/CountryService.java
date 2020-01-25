@@ -2,6 +2,7 @@ package ziibd.project.country;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import ziibd.project.department.Department;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,7 +32,10 @@ public class CountryService {
 
     //Zaktualizuj państwo
     public void updateCountry(Country country){
-        countryRepository.save(country);
+        Country currentCountry = countryRepository.findById(country.getId());
+        currentCountry.setName(country.getName());
+        currentCountry.setReg(country.getReg());
+        countryRepository.save(currentCountry);
     }
 
     //Usuń państwo

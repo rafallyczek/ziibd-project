@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/departments/departments.css"/>
+</head>
+<body>
+<div class="container">
+    <div class="header"><h1>PROJEKT ZIIBD</h1></div>
+    <ul class="menu">
+        <li><a href="/countries">Państwa</a></li>
+        <li><a href="/departments">Departamenty</a></li>
+        <li><a href="/employees">Pracownicy</a></li>
+        <li><a href="/jobs">Prace</a></li>
+        <li><a href="/jobgrades">Stopnie Pracy</a></li>
+        <li><a href="/jobhistories">Historie Prac</a></li>
+        <li><a href="/locations">Lokacje</a></li>
+        <li><a href="/regions">Regiony</a></li>
+    </ul>
+    <div class="tableHeader"><h2>Departamenty</h2></div>
+
+    <div class="columnNames">
+        <div class="departmentId">ID</div>
+        <div class="departmentName">DEPARTAMENT</div>
+        <div class="departmentLoc">LOKACJA</div>
+        <div class="departmentMgr">MANAGER</div>
+        <div style="clear: both;"></div>
+    </div>
+    <div class="result" th:each="department : ${departments}">
+        <div class="departmentId" th:text="${department.id}"></div>
+        <div class="departmentName" th:text="${department.name}"></div>
+        <div class="departmentLoc" th:text="${department.loc}"></div>
+        <div class="departmentMgr" th:text="${department.mgr}"></div>
+        <div class="departmentDeleteOrEdit">
+            <a th:href="@{/deleteDepartment/{id}(id=${department.id})}" class="deleteButton">Usuń</a>
+            <a th:href="@{/editDepartment/{id}(id=${department.id})}" class="editButton">Edytuj</a>
+        </div>
+        <div style="clear: both;"></div>
+    </div>
+    <div class="add">
+        <form th:action="@{/addDepartment}" th:object="${department}" method="post">
+            <h3>Dodaj departament</h3>
+            <input placeholder="Id" class="departmentId" type="text" th:field="*{id}"/>
+            <input placeholder="Nazwa departamentu" class="departmentName" type="text" th:field="*{name}"/>
+            <input placeholder="Id lokacji" class="departmentLoc" type="number" th:field="*{loc}"/>
+            <input placeholder="Id managera" class="departmentMgr" type="number" th:field="*{mgr}"/>
+            <div style="clear: both;"></div>
+            <input class="input" type="submit" value="Dodaj"/>
+            <input class="input" type="reset" value="Resetuj"/>
+        </form>
+    </div>
+</div>
+</body>
+</html>

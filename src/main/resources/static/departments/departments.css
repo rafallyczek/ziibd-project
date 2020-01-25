@@ -1,0 +1,218 @@
+body{
+    background-color: #505050;
+    color: #ffffff;
+}
+.container{
+    margin-left: auto;
+    margin-right: auto;
+    width: 1000px;
+}
+h1{
+    text-align: center;
+    margin: 10px 0;
+}
+h2{
+    text-align: center;
+    margin: 0;
+}
+h3{
+    text-align: center;
+    margin: 0 0 10px 0;
+}
+.header{
+    width: 980px;
+    background-color: #404040;
+    padding: 10px;
+    border-bottom: 1px solid #202020;
+}
+.menu{
+    width: 1000px;
+    background-color: #404040;
+    margin: 0 0 10px 0;
+    list-style-type: none;
+    padding: 0;
+    font-size: 0;
+}
+.menu > li{
+    list-style-type: none;
+    display: inline-block;
+    width: 114px;
+    height: 20px;
+    padding: 8px 5px 5px 5px;
+    font-size: 15px;
+    border-right: 1px dashed #202020;
+    text-align: center;
+    cursor: pointer;
+}
+.menu > li:last-child{
+    border-right: none;
+}
+.menu > li:hover{
+    background-color: #303030;
+}
+.menuPart:last-child{
+    border-right: none;
+}
+.tableHeader{
+    width: 980px;
+    background-color: #404040;
+    padding: 10px;
+    margin-bottom: 5px;
+}
+.columnNames{
+    width: 980px;
+    background-color: #404040;
+    padding: 10px;
+    border-bottom: 1px dashed #606060;
+}
+.result{
+    width: 980px;
+    background-color: #404040;
+    padding: 10px;
+    margin-bottom: 5px;
+    position: relative;
+}
+.departmentId{
+    width: 40px;
+    height: 18px;
+    background-color: #303030;
+    padding: 10px;
+    float: left;
+    margin-left: 5px;
+    border: none;
+    color: white;
+}
+.departmentName{
+    width: 680px;
+    height: 18px;
+    background-color: #303030;
+    padding: 10px;
+    float: left;
+    margin-left: 5px;
+    border: none;
+    color: white;
+}
+.departmentLoc{
+    width: 80px;
+    height: 18px;
+    background-color: #303030;
+    padding: 10px;
+    float: left;
+    margin-left: 5px;
+    border: none;
+    color: white;
+}
+.departmentMgr{
+    width: 80px;
+    height: 18px;
+    background-color: #303030;
+    padding: 10px;
+    float: left;
+    margin-left: 5px;
+    border: none;
+    color: white;
+}
+.departmentDeleteOrEdit{
+    width: 200px;
+    height: 38px;
+    float: left;
+    position: absolute;
+    right: -200px;
+}
+.deleteButton{
+    height: 16px;
+    width: 35px;
+    background-color: #303030;
+    padding: 10px;
+    position: absolute;
+    left: 10px;
+    top: 1px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    visibility: hidden;
+}
+.deleteButton:hover{
+    background-color: #b52626;
+    text-shadow: 1px 1px black;
+}
+.result:hover .deleteButton{
+    visibility: visible;
+}
+.countryDeleteOrEdit:hover .deleteButton{
+    visibility: visible;
+}
+.editButton{
+    height: 16px;
+    width: 40px;
+    background-color: #303030;
+    padding: 10px;
+    position: absolute;
+    left: 70px;
+    top: 1px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    visibility: hidden;
+}
+.editButton:hover{
+    background-color: #2476d4;
+    text-shadow: 1px 1px black;
+}
+.result:hover .editButton{
+    visibility: visible;
+}
+.countryDeleteOrEdit:hover .editButton{
+    visibility: visible;
+}
+a{
+    text-decoration: none;
+    color: white;
+}
+.add{
+    width: 980px;
+    background-color: #404040;
+    padding: 10px;
+}
+.input{
+    margin-top: 10px;
+    margin-left: 5px;
+    background-color: #303030;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    color: white;
+}
+.input:hover{
+    background-color: #2476d4;
+    text-shadow: 1px 1px black;
+}
+.input:last-of-type:hover{
+    background-color: #b52626;
+    text-shadow: 1px 1px black;
+}
+
+/* Chowanie strzałek pola input number w Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+/* Chowanie strzałek pola input number w Firefox */
+input[type=number] {
+    -moz-appearance:textfield;
+}
+/* Kolor placeholdera w Chrome, Firefox, Opera, Safari 10.1+, Firefox */
+::placeholder {
+    color: #505050;
+    opacity: 1;
+}
+/* Kolor placeholdera w Internet Explorer 10-11 */
+:-ms-input-placeholder {
+    color: #505050;
+}
+/* Kolor placeholdera w Microsoft Edge */
+::-ms-input-placeholder {
+    color: #505050;
+}

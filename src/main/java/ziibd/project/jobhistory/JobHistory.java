@@ -2,6 +2,10 @@ package ziibd.project.jobhistory;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import org.springframework.format.annotation.DateTimeFormat;
+import ziibd.project.department.Department;
+import ziibd.project.employee.Employee;
+import ziibd.project.job.Job;
+import ziibd.project.region.Region;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -11,45 +15,38 @@ import java.util.Date;
 @IdClass(JobHistoryId.class)
 public class JobHistory {
 
-    //Pola (Kolumny z tabeli EMPLOYEES)
+    //Pola (Kolumny z tabeli JOB_HISTORY)
     //Klucz główny
     @Id
-    @Column(name = "EMPLOYEE_ID")
+    @Column(name="EMPLOYEE_ID")
     private Integer id;
     @Id
     @Column(name = "START_DATE")
     @DateTimeFormat(pattern = "YY/MM/DD")
     private Date startDate;
+
     //Pozostałe kolumny
+    @Column(name="DEPARTMENT_ID")
+    private Integer dept;
+    @Column(name="JOB_ID")
+    private Integer job;
     @Column(name = "END_DATE")
     @DateTimeFormat(pattern = "YY/MM/DD")
     @JsonFormat(pattern = "YY/MM/dd")
     private Date endDate;
-    @Column(name = "JOB_ID")
-    private String jobId;
-    @Column(name = "DEPARTMENT_ID")
-    private Integer dept;
 
     //Konstruktory
     public JobHistory() {}
 
-    public JobHistory(int id, Date startDate, Date endDate, String jobId, int dept) {
+    public JobHistory(int id, Date startDate, Date endDate, int job, int dept) {
         this.id=id;
         this.startDate=startDate;
         this.endDate=endDate;
-        this.jobId=jobId;
+        this.job=job;
         this.dept=dept;
     }
 
     //Gettery i Settery
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
     public Date getStartDate() {
         return startDate;
     }
@@ -66,12 +63,12 @@ public class JobHistory {
         this.endDate = endDate;
     }
 
-    public String getJobId() {
-        return jobId;
+    public Integer getId() {
+        return id;
     }
 
-    public void setJobId(String jobId) {
-        this.jobId = jobId;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public Integer getDept() {
@@ -82,4 +79,11 @@ public class JobHistory {
         this.dept = dept;
     }
 
+    public Integer getJob() {
+        return job;
+    }
+
+    public void setJob(Integer job) {
+        this.job = job;
+    }
 }

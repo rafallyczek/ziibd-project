@@ -1,8 +1,12 @@
 package ziibd.project.department;
 
+import org.hibernate.annotations.DynamicUpdate;
+
 import javax.persistence.*;
 
+
 @Entity
+@DynamicUpdate
 @Table(name="DEPARTMENTS")
 public class Department {
 
@@ -11,13 +15,14 @@ public class Department {
     @Id
     @Column(name="DEPARTMENT_ID")
     private Integer id;
+
     //Pozostałe kolumny
-    @Column(name="DEPARTMENT_NAME")
-    private String name;
     @Column(name="LOCATION_ID")
     private Integer loc;
     @Column(name="MANAGER_ID")
     private Integer mgr;
+    @Column(name="DEPARTMENT_NAME")
+    private String name;
 
     //Konstruktory
     public Department() {}
@@ -46,19 +51,19 @@ public class Department {
         this.name = name;
     }
 
-    public Integer getMgr() {
-        return mgr;
-    }
-
-    public void setMgr(Integer mgr) {
-        this.mgr = mgr;
-    }
-
     public Integer getLoc() {
         return loc;
     }
 
     public void setLoc(Integer loc) {
         this.loc = loc;
+    }
+
+    public Integer getMgr() {
+        return mgr;
+    }
+
+    public void setMgr(Integer mgr) {
+        this.mgr = mgr;
     }
 }

@@ -1,21 +1,24 @@
 package ziibd.project.location;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import ziibd.project.country.Country;
+import ziibd.project.region.Region;
+
+import javax.persistence.*;
 import java.util.Date;
 
 @Entity
 @Table(name="LOCATIONS")
 public class Location {
 
-    //Pola (Kolumny z tabeli EMPLOYEES)
+    //Pola (Kolumny z tabeli LOCATIONS)
     //Klucz główny
     @Id
     @Column(name = "LOCATION_ID")
     private Integer id;
+
     //Pozostałe kolumny
+    @Column(name="COUNTRY_ID")
+    private String country;
     @Column(name = "STREET_ADDRESS")
     private String street;
     @Column(name = "POSTAL_CODE")
@@ -24,8 +27,6 @@ public class Location {
     private String city;
     @Column(name = "STATE_PROVINCE")
     private String state;
-    @Column(name = "COUNTRY_ID")
-    private String country;
 
     //Konstruktory
     public Location() {}

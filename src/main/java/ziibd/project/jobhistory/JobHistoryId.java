@@ -1,6 +1,7 @@
 package ziibd.project.jobhistory;
 
 import org.springframework.format.annotation.DateTimeFormat;
+import ziibd.project.employee.Employee;
 
 import javax.persistence.Column;
 import javax.persistence.Id;

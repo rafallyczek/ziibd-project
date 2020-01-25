@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/departments/departmentEdit.css"/>
+</head>
+<body>
+<div class="container">
+    <div class="header"><h1>PROJEKT ZIIBD</h1></div>
+    <div class="tableHeader"><h2>Edytuj Departament</h2></div>
+    <div class="edit">
+        <form th:action="@{/editDepartment}" th:object="${retrieveddepartment}" method="post">
+            <input placeholder="Id" class="departmentId" type="text" th:field="*{id}" readonly/>
+            <input placeholder="Nazwa departamentu" class="departmentName" type="text" th:field="*{name}"/>
+            <input placeholder="Id lokacji" class="departmentLoc" type="number" th:field="*{loc}"/>
+            <input placeholder="Id managera" class="departmentMgr" type="number" th:field="*{mgr}"/>
+            <div style="clear: both;"></div>
+            <input class="input" type="submit" value="Zatwierdź"/>
+            <input class="input" type="reset" value="Resetuj"/>
+            <a th:href="@{/departments}" class="comebackButton">Powrót</a>
+        </form>
+    </div>
+</div>
+</body>
+</html>

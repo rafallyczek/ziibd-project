@@ -9,11 +9,12 @@ import javax.persistence.Table;
 @Table(name="REGIONS")
 public class Region {
 
-    //Pola (Kolumny z tabeli EMPLOYEES)
+    //Pola (Kolumny z tabeli REGIONS)
     //Klucz główny
     @Id
     @Column(name = "REGION_ID")
     private Integer id;
+
     //Pozostałe kolumny
     @Column(name = "REGION_NAME")
     private String reg;

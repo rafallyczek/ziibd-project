@@ -31,7 +31,11 @@ public class DepartmentService {
 
     //Zaktualizuj departament
     public void updateDepartment(Department department){
-        departmentRepository.save(department);
+        Department currentDepartment = departmentRepository.findById(department.getId()).get();
+        currentDepartment.setName(department.getName());
+        currentDepartment.setLoc(department.getLoc());
+        currentDepartment.setMgr(department.getMgr());
+        departmentRepository.save(currentDepartment);
     }
 
     //Usuń departament

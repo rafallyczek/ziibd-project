@@ -9,11 +9,12 @@ import javax.persistence.Table;
 @Table(name="JOBS")
 public class Job {
 
-    //Pola (Kolumny z tabeli EMPLOYEES)
+    //Pola (Kolumny z tabeli JOBS)
     //Klucz główny
     @Id
     @Column(name = "JOB_ID")
     private String id;
+
     //Pozostałe kolumny
     @Column(name = "JOB_TITLE")
     private String jobTitle;

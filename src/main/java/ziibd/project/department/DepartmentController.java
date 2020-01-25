@@ -1,40 +1,53 @@
 package ziibd.project.department;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import ziibd.project.employee.Employee;
 
-import java.util.List;
+import javax.transaction.Transactional;
 
-@RestController
+@Controller
 public class DepartmentController {
 
     @Autowired
     private DepartmentService departmentService;
 
-    @RequestMapping("/departments/{id}")
-    public Department getDepartment(@PathVariable int id){
-        return departmentService.getDepartment(id);
-    }
-
+    //Zwróć wszystkie departamenty
     @RequestMapping("/departments")
-    public List<Department> getDepartments() {
-        return departmentService.getDepartments();
+    public String getDepartments(Model model) {
+        model.addAttribute("departments",departmentService.getDepartments());
+        model.addAttribute("department",new Department());
+        return "departments/departments";
     }
 
-    @PostMapping("/departments")
-    public void addDepartment(@RequestBody Department department){
+    //Dodaj departament
+    @PostMapping("/addDepartment")
+    public String addDepartment(@ModelAttribute("department") Department department){
         departmentService.addDepartment(department);
+        return "redirect:/departments";
     }
 
-    @PutMapping("/departments/{id}")
-    public void updateDepartment(@RequestBody Department department, @PathVariable int id){
+    //Pobierz i zapisz departament o zadanym id i zwróć widok edycji departamentu
+    @RequestMapping("/editDepartment/{id}")
+    public String updateDepartmentById(@PathVariable int id, Model model){
+        model.addAttribute("retrieveddepartment",departmentService.getDepartment(id));
+        return "departments/departmentEdit";
+    }
+
+    //Edytuj departament
+    @PostMapping("/editDepartment")
+    public String updateDepartment(@ModelAttribute("retrieveddepartment") Department department){
         departmentService.updateDepartment(department);
+        return "redirect:/departments";
     }
 
-    @DeleteMapping("/departments/{id}")
-    public void deleteDepartment(@PathVariable int id){
+    //Usuń departament
+    @Transactional
+    @RequestMapping("/deleteDepartment/{id}")
+    public String deleteDepartment(@PathVariable int id){
         departmentService.deleteDepartment(id);
+        return "redirect:/departments";
     }
 
 }
