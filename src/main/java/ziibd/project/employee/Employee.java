@@ -1,15 +1,14 @@
 package ziibd.project.employee;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
+import org.hibernate.annotations.DynamicUpdate;
 import org.springframework.format.annotation.DateTimeFormat;
-import ziibd.project.department.Department;
-import ziibd.project.job.Job;
-import ziibd.project.region.Region;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.Date;
 
 @Entity
+@DynamicUpdate
 @Table(name="EMPLOYEES")
 public class Employee {
 
@@ -20,12 +19,6 @@ public class Employee {
     private Integer id;
 
     //Pozostałe kolumny
-    @Column(name="DEPARTMENT_ID")
-    private Integer dept;
-    @Column(name="JOB_ID")
-    private Integer job;
-    @Column(name="MANAGER_ID")
-    private Integer mgr;
     @Column(name = "FIRST_NAME")
     private String firstName;
     @Column(name = "LAST_NAME")
@@ -35,29 +28,35 @@ public class Employee {
     @Column(name = "PHONE_NUMBER")
     private String phone;
     @Column(name = "HIRE_DATE")
-    @DateTimeFormat(pattern = "YY/MM/DD")
-    @JsonFormat(pattern = "yy/MM/dd")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @Temporal(TemporalType.DATE)
     private Date date;
+    @Column(name="JOB_ID")
+    private String job;
+    @Column(name="DEPARTMENT_ID")
+    private Integer dept;
+    @Column(name="MANAGER_ID")
+    private Integer mgr;
     @Column(name = "SALARY")
     private Integer salary;
     @Column(name = "COMMISSION_PCT")
-    private Integer comm;
+    private Float comm;
 
     //Konstruktory
     public Employee() {}
 
-    public Employee(int id, String firstName, String lastName, String email, String phone, Date date, int job, int salary, int comm, int mgr, int dept) {
+    public Employee(int id, String firstName, String lastName, String email, String phone, Date date, String job, int salary, Float comm, int mgr, int dept) {
         this.id=id;
         this.firstName=firstName;
         this.lastName=lastName;
         this.email=email;
         this.phone=phone;
-        this.date=date;
         this.job=job;
         this.salary=salary;
         this.comm=comm;
         this.mgr=mgr;
         this.dept=dept;
+        this.date=date;
     }
 
     //Gettery i Settery
@@ -117,11 +116,11 @@ public class Employee {
         this.salary = salary;
     }
 
-    public Integer getComm() {
+    public Float getComm() {
         return comm;
     }
 
-    public void setComm(Integer comm) {
+    public void setComm(Float comm) {
         this.comm = comm;
     }
 
@@ -133,11 +132,11 @@ public class Employee {
         this.dept = dept;
     }
 
-    public Integer getJob() {
+    public String getJob() {
         return job;
     }
 
-    public void setJob(Integer job) {
+    public void setJob(String job) {
         this.job = job;
     }
 

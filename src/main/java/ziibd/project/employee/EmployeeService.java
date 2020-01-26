@@ -31,7 +31,18 @@ public class EmployeeService {
 
     //Zaktualizuj pracownika
     public void updateEmployee(Employee employee){
-        employeeRepository.save(employee);
+        Employee currentEmployee = employeeRepository.findById(employee.getId()).get();
+        currentEmployee.setFirstName(employee.getFirstName());
+        currentEmployee.setLastName(employee.getLastName());
+        currentEmployee.setDept(employee.getDept());
+        currentEmployee.setJob(employee.getJob());
+        currentEmployee.setMgr(employee.getMgr());
+        currentEmployee.setEmail(employee.getEmail());
+        currentEmployee.setPhone(employee.getPhone());
+        currentEmployee.setDate(employee.getDate());
+        currentEmployee.setSalary(employee.getSalary());
+        currentEmployee.setComm(employee.getComm());
+        employeeRepository.save(currentEmployee);
     }
 
     //Usuń pracownika
