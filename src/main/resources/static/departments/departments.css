@@ -73,10 +73,10 @@ h3{
     position: relative;
 }
 .departmentId{
-    width: 40px;
+    width: 50px;
     height: 18px;
     background-color: #303030;
-    padding: 10px;
+    padding: 5px;
     float: left;
     margin-left: 5px;
     border: none;
@@ -86,27 +86,27 @@ h3{
     width: 680px;
     height: 18px;
     background-color: #303030;
-    padding: 10px;
+    padding: 5px;
     float: left;
     margin-left: 5px;
     border: none;
     color: white;
 }
 .departmentLoc{
-    width: 80px;
+    width: 90px;
     height: 18px;
     background-color: #303030;
-    padding: 10px;
+    padding: 5px;
     float: left;
     margin-left: 5px;
     border: none;
     color: white;
 }
 .departmentMgr{
-    width: 80px;
+    width: 90px;
     height: 18px;
     background-color: #303030;
-    padding: 10px;
+    padding: 5px;
     float: left;
     margin-left: 5px;
     border: none;
@@ -123,7 +123,7 @@ h3{
     height: 16px;
     width: 35px;
     background-color: #303030;
-    padding: 10px;
+    padding: 5px;
     position: absolute;
     left: 10px;
     top: 1px;
@@ -131,6 +131,7 @@ h3{
     border-radius: 5px;
     cursor: pointer;
     visibility: hidden;
+    text-align: center;
 }
 .deleteButton:hover{
     background-color: #b52626;
@@ -144,16 +145,17 @@ h3{
 }
 .editButton{
     height: 16px;
-    width: 40px;
+    width: 45px;
     background-color: #303030;
-    padding: 10px;
+    padding: 5px;
     position: absolute;
-    left: 70px;
+    left: 60px;
     top: 1px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     visibility: hidden;
+    text-align: center;
 }
 .editButton:hover{
     background-color: #2476d4;
@@ -178,7 +180,7 @@ a{
     margin-top: 10px;
     margin-left: 5px;
     background-color: #303030;
-    padding: 10px;
+    padding: 5px;
     border: none;
     border-radius: 5px;
     cursor: pointer;

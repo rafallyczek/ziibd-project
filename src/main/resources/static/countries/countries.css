@@ -73,10 +73,10 @@ h3{
     position: relative;
 }
 .countryTag{
-    width: 40px;
+    width: 60px;
     height: 18px;
     background-color: #303030;
-    padding: 10px;
+    padding: 5px;
     float: left;
     margin-left: 5px;
     border: none;
@@ -86,17 +86,17 @@ h3{
     width: 800px;
     height: 18px;
     background-color: #303030;
-    padding: 10px;
+    padding: 5px;
     float: left;
     margin-left: 5px;
     border: none;
     color: white;
 }
 .countryRegion{
-    width: 60px;
+    width: 70px;
     height: 18px;
     background-color: #303030;
-    padding: 10px;
+    padding: 5px;
     float: left;
     margin-left: 5px;
     border: none;
@@ -113,7 +113,7 @@ h3{
     height: 16px;
     width: 35px;
     background-color: #303030;
-    padding: 10px;
+    padding: 5px;
     position: absolute;
     left: 10px;
     top: 1px;
@@ -134,11 +134,11 @@ h3{
 }
 .editButton{
     height: 16px;
-    width: 40px;
+    width: 45px;
     background-color: #303030;
-    padding: 10px;
+    padding: 5px;
     position: absolute;
-    left: 70px;
+    left: 60px;
     top: 1px;
     border: none;
     border-radius: 5px;
@@ -168,7 +168,7 @@ a{
     margin-top: 10px;
     margin-left: 5px;
     background-color: #303030;
-    padding: 10px;
+    padding: 5px;
     border: none;
     border-radius: 5px;
     cursor: pointer;

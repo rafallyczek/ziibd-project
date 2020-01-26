@@ -35,10 +35,10 @@ h2{
     position: relative;
 }
 .departmentId{
-    width: 40px;
+    width: 50px;
     height: 18px;
     background-color: #303030;
-    padding: 10px;
+    padding: 5px;
     float: left;
     margin-left: 5px;
     border: none;
@@ -48,27 +48,27 @@ h2{
     width: 680px;
     height: 18px;
     background-color: #303030;
-    padding: 10px;
+    padding: 5px;
     float: left;
     margin-left: 5px;
     border: none;
     color: white;
 }
 .departmentLoc{
-    width: 80px;
+    width: 90px;
     height: 18px;
     background-color: #303030;
-    padding: 10px;
+    padding: 5px;
     float: left;
     margin-left: 5px;
     border: none;
     color: white;
 }
 .departmentMgr{
-    width: 80px;
+    width: 90px;
     height: 18px;
     background-color: #303030;
-    padding: 10px;
+    padding: 5px;
     float: left;
     margin-left: 5px;
     border: none;
@@ -78,7 +78,7 @@ h2{
     margin-top: 10px;
     margin-left: 5px;
     background-color: #303030;
-    padding: 10px;
+    padding: 5px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -109,7 +109,7 @@ input[type=number] {
     height: 15px;
     width: 45px;
     background-color: #303030;
-    padding: 10px;
+    padding: 5px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
