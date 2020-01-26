@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import ziibd.project.department.DepartmentThread;
 
 import javax.transaction.Transactional;
 
@@ -12,6 +13,8 @@ public class EmployeeController {
 
     @Autowired
     private EmployeeService employeeService;
+
+    EmployeeThread employeeThread = null;
 
     //Zwróć wszystkich pracowników
     @RequestMapping("/employees")
@@ -24,6 +27,8 @@ public class EmployeeController {
     //Dodaj pracownika
     @PostMapping("/addEmployee")
     public String addEmployee(@ModelAttribute("employee") Employee employee){
+        employeeThread = new EmployeeThread(employee,"addEmployeeThread");
+        employeeThread.start();
         employeeService.addEmployee(employee);
         return "redirect:/employees";
     }
@@ -31,6 +36,8 @@ public class EmployeeController {
     //Pobierz i zapisz pracownika o zadanym id i zwróć widok edycji pracownika
     @RequestMapping("/editEmployee/{id}")
     public String updateEmployeeById(@PathVariable int id, Model model){
+        employeeThread = new EmployeeThread(employeeService.getEmployee(id),"editByIdEmployeeThread");
+        employeeThread.start();
         model.addAttribute("retrievedemployee",employeeService.getEmployee(id));
         return "employees/employeeEdit";
     }
@@ -38,6 +45,8 @@ public class EmployeeController {
     //Edytuj pracownika
     @PostMapping("/editEmployee")
     public String updateEmployee(@ModelAttribute("retrievedemployee") Employee employee){
+        employeeThread = new EmployeeThread(employee,"editEmployeeThread");
+        employeeThread.start();
         employeeService.updateEmployee(employee);
         return "redirect:/employees";
     }
