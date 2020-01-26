@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/employees/employees.css"/>
+</head>
+<body>
+<div class="container">
+    <div class="header"><h1>PROJEKT ZIIBD</h1></div>
+    <ul class="menu">
+        <li><a href="/countries">Państwa</a></li>
+        <li><a href="/departments">Departamenty</a></li>
+        <li><a href="/employees">Pracownicy</a></li>
+        <li><a href="/jobs">Prace</a></li>
+        <li><a href="/jobgrades">Stopnie Pracy</a></li>
+        <li><a href="/jobhistories">Historie Prac</a></li>
+        <li><a href="/locations">Lokacje</a></li>
+        <li><a href="/regions">Regiony</a></li>
+    </ul>
+    <div class="tableHeader"><h2>Pracownicy</h2></div>
+
+    <div class="columnNames">
+        <div class="employeeId">ID</div>
+        <div class="employeeFirstName">IMIĘ</div>
+        <div class="employeeLastName">NAZWISKO</div>
+        <div class="employeeEmail">EMAIL</div>
+        <div class="employeePhone">TELEFON</div>
+        <div class="employeeDate">DATA</div>
+        <div class="employeeJob">PRACA</div>
+        <div class="employeeSalary">PŁACA</div>
+        <div class="employeeComm">PCT</div>
+        <div class="employeeMgr">MGR</div>
+        <div class="employeeMgr">DEPT</div>
+        <div style="clear: both;"></div>
+    </div>
+    <div class="result" th:each="employee : ${employees}">
+        <div class="employeeId" th:text="${employee.id}"></div>
+        <div class="employeeFirstName" th:text="${employee.firstName}"></div>
+        <div class="employeeLastName" th:text="${employee.lastName}"></div>
+        <div class="employeeEmail" th:text="${employee.email}"></div>
+        <div class="employeePhone" th:text="${employee.phone}"></div>
+        <div class="employeeDate" th:text="${employee.date}"></div>
+        <div class="employeeJob" th:text="${employee.job}"></div>
+        <div class="employeeSalary" th:text="${employee.salary}"></div>
+        <div class="employeeComm" th:text="${employee.comm}"></div>
+        <div class="employeeMgr" th:text="${employee.mgr}"></div>
+        <div class="employeeDept" th:text="${employee.dept}"></div>
+        <div class="employeeDeleteOrEdit">
+            <a th:href="@{/deleteEmployee/{id}(id=${employee.id})}" class="deleteButton">Usuń</a>
+            <a th:href="@{/editEmployee/{id}(id=${employee.id})}" class="editButton">Edytuj</a>
+        </div>
+        <div style="clear: both;"></div>
+    </div>
+    <div class="add">
+        <form th:action="@{/addEmployee}" th:object="${employee}" method="post">
+            <h3>Dodaj pracownika</h3>
+            <input placeholder="Id" class="employeeId" type="number" th:field="*{id}"/>
+            <input placeholder="Imię" class="employeeFirstName" type="text" th:field="*{firstName}"/>
+            <input placeholder="Nazwisko" class="employeeLastName" type="text" th:field="*{lastName}"/>
+            <input placeholder="Email" class="employeeEmail" type="text" th:field="*{email}"/>
+            <input placeholder="Telefon" class="employeePhone" type="text" th:field="*{phone}"/>
+            <input placeholder="Data" class="employeeDate" type="date" th:field="*{date}"/>
+            <input placeholder="Praca" class="employeeJob" type="text" th:field="*{job}"/>
+            <input placeholder="Płaca" class="employeeSalary" type="number" th:field="*{salary}"/>
+            <input placeholder="Pct" class="employeeComm" type="number" th:field="*{comm}"/>
+            <input placeholder="Mgr" class="employeeMgr" type="number" th:field="*{mgr}"/>
+            <input placeholder="Dept" class="employeeDept" type="number" th:field="*{dept}"/>
+            <div style="clear: both;"></div>
+            <input class="input" type="submit" value="Dodaj"/>
+            <input class="input" type="reset" value="Resetuj"/>
+        </form>
+    </div>
+</div>
+</body>
+</html>

@@ -34,8 +34,8 @@ h2{
     margin-bottom: 20px;
     position: relative;
 }
-.departmentId{
-    width: 50px;
+.employeeId{
+    width: 30px;
     height: 18px;
     background-color: #303030;
     padding: 5px;
@@ -44,17 +44,7 @@ h2{
     border: none;
     color: grey;
 }
-.departmentName{
-    width: 680px;
-    height: 18px;
-    background-color: #303030;
-    padding: 5px;
-    float: left;
-    margin-left: 5px;
-    border: none;
-    color: white;
-}
-.departmentLoc{
+.employeeFirstName{
     width: 90px;
     height: 18px;
     background-color: #303030;
@@ -64,8 +54,88 @@ h2{
     border: none;
     color: white;
 }
-.departmentMgr{
+.employeeLastName{
     width: 90px;
+    height: 18px;
+    background-color: #303030;
+    padding: 5px;
+    float: left;
+    margin-left: 5px;
+    border: none;
+    color: white;
+}
+.employeeEmail{
+    width: 100px;
+    height: 18px;
+    background-color: #303030;
+    padding: 5px;
+    float: left;
+    margin-left: 5px;
+    border: none;
+    color: white;
+}
+.employeePhone{
+    width: 130px;
+    height: 18px;
+    background-color: #303030;
+    padding: 5px;
+    float: left;
+    margin-left: 5px;
+    border: none;
+    color: white;
+}
+.employeeDate{
+    width: 80px;
+    height: 18px;
+    background-color: #303030;
+    padding: 5px;
+    float: left;
+    margin-left: 5px;
+    border: none;
+    color: white;
+}
+.employeeJob{
+    width: 110px;
+    height: 18px;
+    background-color: #303030;
+    padding: 5px;
+    float: left;
+    margin-left: 5px;
+    border: none;
+    color: white;
+}
+.employeeSalary{
+    width: 60px;
+    height: 18px;
+    background-color: #303030;
+    padding: 5px;
+    float: left;
+    margin-left: 5px;
+    border: none;
+    color: white;
+}
+.employeeComm{
+    width: 40px;
+    height: 18px;
+    background-color: #303030;
+    padding: 5px;
+    float: left;
+    margin-left: 5px;
+    border: none;
+    color: white;
+}
+.employeeMgr{
+    width: 40px;
+    height: 18px;
+    background-color: #303030;
+    padding: 5px;
+    float: left;
+    margin-left: 5px;
+    border: none;
+    color: white;
+}
+.employeeDept{
+    width: 40px;
     height: 18px;
     background-color: #303030;
     padding: 5px;
