@@ -1,41 +1,61 @@
 package ziibd.project.jobgrade;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.transaction.Transactional;
-import java.util.List;
 
-@RestController
+@Controller
 public class JobGradeController {
 
     @Autowired
     private JobGradeService jobGradeService;
 
-    @RequestMapping("/jobgrades/{id}")
-    public JobGrade getJobGrade(@PathVariable String id){
-        return jobGradeService.getJobGrade(id);
+    JobGradeThread jobGradeThread = null;
+
+    //Zwróć wszystkie stopnie pracy
+    @RequestMapping("/jobGrades")
+    public String getJobGrades(Model model) {
+        model.addAttribute("jobgrades",jobGradeService.getJobGrades());
+        model.addAttribute("jobgrade",new JobGrade());
+        return "jobGrades/jobGrades";
     }
 
-    @RequestMapping("/jobgrades")
-    public List<JobGrade> getJobGrades() {
-        return jobGradeService.getJobGrades();
-    }
-
-    @PostMapping("/jobgrades")
-    public void addJobGrade(@RequestBody JobGrade jobGrade){
+    //Dodaj stopień pracy
+    @PostMapping("/addJobGrade")
+    public String addJobGrade(@ModelAttribute("jobgrade") JobGrade jobGrade){
+        jobGradeThread = new JobGradeThread(jobGrade,"addJobGradeThread");
+        jobGradeThread.start();
         jobGradeService.addJobGrade(jobGrade);
+        return "redirect:/jobGrades";
     }
 
-    @PutMapping("/jobgrades/{id}")
-    public void updateJobGrade(@RequestBody JobGrade jobGrade, @PathVariable int id){
+    //Pobierz i zapisz stopień pracy o zadanym id i zwróć widok edycji stopnia pracy
+    @RequestMapping("/editJobGrade/{id}")
+    public String updateJobGradeById(@PathVariable String id, Model model){
+        jobGradeThread = new JobGradeThread(jobGradeService.getJobGrade(id),"editByIdJobGradeThread");
+        jobGradeThread.start();
+        model.addAttribute("retrievedjobgrade",jobGradeService.getJobGrade(id));
+        return "jobGrades/jobGradeEdit";
+    }
+
+    //Edytuj stopień pracy
+    @PostMapping("/editJobGrade")
+    public String updateJobGrade(@ModelAttribute("retrievedjobgrade") JobGrade jobGrade){
+        jobGradeThread = new JobGradeThread(jobGrade,"editJobGradeThread");
+        jobGradeThread.start();
         jobGradeService.updateJobGrade(jobGrade);
+        return "redirect:/jobGrades";
     }
 
+    //Usuń stopień pracy
     @Transactional
-    @DeleteMapping("/jobgrades/{id}")
-    public void deleteJobGrade(@PathVariable String id){
+    @RequestMapping("/deleteJobGrade/{id}")
+    public String deleteJobGrade(@PathVariable String id){
         jobGradeService.deleteJobGrade(id);
+        return "redirect:/jobGrades";
     }
 
 }

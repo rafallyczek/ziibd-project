@@ -1,5 +1,7 @@
 package ziibd.project.jobgrade;
 
+import org.hibernate.annotations.DynamicUpdate;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -7,6 +9,7 @@ import javax.persistence.Table;
 import java.util.Date;
 
 @Entity
+@DynamicUpdate
 @Table(name="JOB_GRADES")
 public class JobGrade {
 

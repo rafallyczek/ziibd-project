@@ -31,7 +31,11 @@ public class JobGradeService {
 
     //Zaktualizuj stopień pracy
     public void updateJobGrade(JobGrade jobGrade){
-        jobGradeRepository.save(jobGrade);
+        JobGrade currentJobGrade = jobGradeRepository.findById(jobGrade.getId());
+        currentJobGrade.setId(jobGrade.getId());
+        currentJobGrade.setLowestSal(jobGrade.getLowestSal());
+        currentJobGrade.setHighestSal(jobGrade.getHighestSal());
+        jobGradeRepository.save(currentJobGrade);
     }
 
     //Usuń stopień pracy
