@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Ziibd</title>
+    <link rel="stylesheet" href="/locations/locationEdit.css"/>
+</head>
+<body>
+<div class="container">
+    <div class="header"><h1>PROJEKT ZIIBD</h1></div>
+    <div class="tableHeader"><h2>Edytuj Lokację</h2></div>
+    <div class="edit">
+        <form th:action="@{/editLocation}" th:object="${retrievedlocation}" method="post">
+            <input placeholder="Id" class="locationId" type="number" th:field="*{id}" readonly/>
+            <input placeholder="Państwo" class="locationCountry" type="text" th:field="*{country}"/>
+            <input placeholder="Ulica" class="locationStreet" type="text" th:field="*{street}"/>
+            <input placeholder="Kod pocztowy" class="locationPostalCode" type="text" th:field="*{postalCode}"/>
+            <input placeholder="Miasto" class="locationCity" type="text" th:field="*{city}"/>
+            <input placeholder="Stan" class="locationState" type="text" th:field="*{state}"/>
+            <div style="clear: both;"></div>
+            <input class="input" type="submit" value="Zatwierdź"/>
+            <input class="input" type="reset" value="Resetuj"/>
+            <a th:href="@{/locations}" class="comebackButton">Powrót</a>
+        </form>
+    </div>
+</div>
+</body>
+</html>
