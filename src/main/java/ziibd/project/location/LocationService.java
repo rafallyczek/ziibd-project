@@ -31,7 +31,14 @@ public class LocationService {
 
     //Zaktualizuj lokację
     public void updateLocation(Location location){
-        locationRepository.save(location);
+        Location currentLocation = locationRepository.findById(location.getId()).get();
+        currentLocation.setId(location.getId());
+        currentLocation.setCountry(location.getCountry());
+        currentLocation.setStreet(location.getStreet());
+        currentLocation.setPostalCode(location.getPostalCode());
+        currentLocation.setCity(location.getCity());
+        currentLocation.setState(location.getState());
+        locationRepository.save(currentLocation);
     }
 
     //Usuń lokację

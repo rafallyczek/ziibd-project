@@ -1,5 +1,6 @@
 package ziibd.project.location;
 
+import org.hibernate.annotations.DynamicUpdate;
 import ziibd.project.country.Country;
 import ziibd.project.region.Region;
 
@@ -7,6 +8,7 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Entity
+@DynamicUpdate
 @Table(name="LOCATIONS")
 public class Location {
 
