@@ -1,6 +1,7 @@
 package ziibd.project.jobhistory;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import org.hibernate.annotations.DynamicUpdate;
 import org.springframework.format.annotation.DateTimeFormat;
 import ziibd.project.department.Department;
 import ziibd.project.employee.Employee;
@@ -12,6 +13,7 @@ import java.util.Date;
 
 @Entity
 @Table(name="JOB_HISTORY")
+@DynamicUpdate
 @IdClass(JobHistoryId.class)
 public class JobHistory {
 
@@ -22,23 +24,24 @@ public class JobHistory {
     private Integer id;
     @Id
     @Column(name = "START_DATE")
-    @DateTimeFormat(pattern = "YY/MM/DD")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @Temporal(TemporalType.DATE)
     private Date startDate;
 
     //Pozostałe kolumny
     @Column(name="DEPARTMENT_ID")
     private Integer dept;
     @Column(name="JOB_ID")
-    private Integer job;
+    private String job;
     @Column(name = "END_DATE")
-    @DateTimeFormat(pattern = "YY/MM/DD")
-    @JsonFormat(pattern = "YY/MM/dd")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @Temporal(TemporalType.DATE)
     private Date endDate;
 
     //Konstruktory
     public JobHistory() {}
 
-    public JobHistory(int id, Date startDate, Date endDate, int job, int dept) {
+    public JobHistory(int id, Date startDate, Date endDate, String job, int dept) {
         this.id=id;
         this.startDate=startDate;
         this.endDate=endDate;
@@ -79,11 +82,11 @@ public class JobHistory {
         this.dept = dept;
     }
 
-    public Integer getJob() {
+    public String getJob() {
         return job;
     }
 
-    public void setJob(Integer job) {
+    public void setJob(String job) {
         this.job = job;
     }
 }
