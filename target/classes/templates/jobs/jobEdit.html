@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/jobs/jobEdit.css"/>
+</head>
+<body>
+<div class="container">
+    <div class="header"><h1>PROJEKT ZIIBD</h1></div>
+    <div class="tableHeader"><h2>Edytuj Pracę</h2></div>
+    <div class="edit">
+        <form th:action="@{/editJob}" th:object="${retrievedjob}" method="post">
+            <input placeholder="Id" class="jobId" type="text" th:field="*{id}" readonly/>
+            <input placeholder="Tytuł" class="jobTitle" type="text" th:field="*{jobTitle}"/>
+            <input placeholder="Płaca minimalna" class="jobMinSal" type="number" th:field="*{minSal}"/>
+            <input placeholder="Płaca maksymalna" class="jobMaxSal" type="number" th:field="*{maxSal}"/>
+            <div style="clear: both;"></div>
+            <input class="input" type="submit" value="Zatwierdź"/>
+            <input class="input" type="reset" value="Resetuj"/>
+            <a th:href="@{/jobs}" class="comebackButton">Powrót</a>
+        </form>
+    </div>
+</div>
+</body>
+</html>

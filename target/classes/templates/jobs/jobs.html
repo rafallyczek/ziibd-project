@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/jobs/jobs.css"/>
+</head>
+<body>
+<div class="container">
+    <div class="header"><h1>PROJEKT ZIIBD</h1></div>
+    <ul class="menu">
+        <li><a href="/countries">Państwa</a></li>
+        <li><a href="/departments">Departamenty</a></li>
+        <li><a href="/employees">Pracownicy</a></li>
+        <li><a href="/jobs">Prace</a></li>
+        <li><a href="/jobgrades">Stopnie Pracy</a></li>
+        <li><a href="/jobhistories">Historie Prac</a></li>
+        <li><a href="/locations">Lokacje</a></li>
+        <li><a href="/regions">Regiony</a></li>
+    </ul>
+    <div class="tableHeader"><h2>Prace</h2></div>
+
+    <div class="columnNames">
+        <div class="jobId">ID</div>
+        <div class="jobTitle">TYTUŁ</div>
+        <div class="jobMinSal">PŁACA MINIMALNA</div>
+        <div class="jobMaxSal">PŁACA MAKSYMALNA</div>
+        <div style="clear: both;"></div>
+    </div>
+    <div class="result" th:each="job : ${jobs}">
+        <div class="jobId" th:text="${job.id}"></div>
+        <div class="jobTitle" th:text="${job.jobTitle}"></div>
+        <div class="jobMinSal" th:text="${job.minSal}"></div>
+        <div class="jobMaxSal" th:text="${job.maxSal}"></div>
+        <div class="jobDeleteOrEdit">
+            <a th:href="@{/deleteJob/{id}(id=${job.id})}" class="deleteButton">Usuń</a>
+            <a th:href="@{/editJob/{id}(id=${job.id})}" class="editButton">Edytuj</a>
+        </div>
+        <div style="clear: both;"></div>
+    </div>
+    <div class="add">
+        <form th:action="@{/addJob}" th:object="${job}" method="post">
+            <h3>Dodaj pracownika</h3>
+            <input placeholder="Id" class="jobId" type="text" th:field="*{id}"/>
+            <input placeholder="Tytuł" class="jobTitle" type="text" th:field="*{jobTitle}"/>
+            <input placeholder="Płaca minimalna" class="jobMinSal" type="number" th:field="*{minSal}"/>
+            <input placeholder="Płaca maksymalna" class="jobMaxSal" type="number" th:field="*{maxSal}"/>
+            <div style="clear: both;"></div>
+            <input class="input" type="submit" value="Dodaj"/>
+            <input class="input" type="reset" value="Resetuj"/>
+        </form>
+    </div>
+</div>
+</body>
+</html>
