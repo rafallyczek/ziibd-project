@@ -31,7 +31,12 @@ public class JobService {
 
     //Zaktualizuj pracę
     public void updateJob(Job job){
-        jobRepository.save(job);
+        Job currentJob = jobRepository.findById(job.getId());
+        currentJob.setId(job.getId());
+        currentJob.setJobTitle(job.getJobTitle());
+        currentJob.setMinSal(job.getMinSal());
+        currentJob.setMaxSal(job.getMaxSal());
+        jobRepository.save(currentJob);
     }
 
     //Usuń pracę
