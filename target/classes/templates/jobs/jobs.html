@@ -40,7 +40,7 @@
     </div>
     <div class="add">
         <form th:action="@{/addJob}" th:object="${job}" method="post">
-            <h3>Dodaj pracownika</h3>
+            <h3>Dodaj pracę</h3>
             <input placeholder="Id" class="jobId" type="text" th:field="*{id}"/>
             <input placeholder="Tytuł" class="jobTitle" type="text" th:field="*{jobTitle}"/>
             <input placeholder="Płaca minimalna" class="jobMinSal" type="number" th:field="*{minSal}"/>

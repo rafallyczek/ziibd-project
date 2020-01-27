@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/jobGrades/jobGradeEdit.css"/>
+</head>
+<body>
+<div class="container">
+    <div class="header"><h1>PROJEKT ZIIBD</h1></div>
+    <div class="tableHeader"><h2>Edytuj Stopień Pracy</h2></div>
+    <div class="edit">
+        <form th:action="@{/editJobGrade}" th:object="${retrievedjobgrade}" method="post">
+            <input placeholder="Id" class="jobGradeId" type="text" th:field="*{id}" readonly/>
+            <input placeholder="Płaca minimalna" class="jobGradeLowSal" type="number" th:field="*{lowestSal}"/>
+            <input placeholder="Płaca maksymalna" class="jobGradeHighSal" type="number" th:field="*{highestSal}"/>
+            <div style="clear: both;"></div>
+            <input class="input" type="submit" value="Zatwierdź"/>
+            <input class="input" type="reset" value="Resetuj"/>
+            <a th:href="@{/jobGrades}" class="comebackButton">Powrót</a>
+        </form>
+    </div>
+</div>
+</body>
+</html>
