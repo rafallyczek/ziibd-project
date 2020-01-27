@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Ziibd</title>
+    <link rel="stylesheet" href="/locations/locations.css"/>
+</head>
+<body>
+<div class="container">
+    <div class="header"><h1>PROJEKT ZIIBD</h1></div>
+    <ul class="menu">
+        <li><a href="/countries">Państwa</a></li>
+        <li><a href="/departments">Departamenty</a></li>
+        <li><a href="/employees">Pracownicy</a></li>
+        <li><a href="/jobs">Prace</a></li>
+        <li><a href="/jobGrades">Stopnie Pracy</a></li>
+        <li><a href="/jobHistories">Historie Prac</a></li>
+        <li><a href="/locations">Lokacje</a></li>
+        <li><a href="/regions">Regiony</a></li>
+    </ul>
+    <div class="tableHeader"><h2>Lokacje</h2></div>
+
+    <div class="columnNames">
+        <div class="locationId">ID</div>
+        <div class="locationCountry">PAŃSTWO</div>
+        <div class="locationStreet">ULICA</div>
+        <div class="locationPostalCode">KOD POCZTOWY</div>
+        <div class="locationCity">MIASTO</div>
+        <div class="locationState">STAN</div>
+        <div style="clear: both;"></div>
+    </div>
+    <div class="result" th:each="location : ${locations}">
+        <div class="locationId" th:text="${location.id}"></div>
+        <div class="locationCountry" th:text="${location.country}"></div>
+        <div class="locationStreet" th:text="${location.street}"></div>
+        <div class="locationPostalCode" th:text="${location.postalCode}"></div>
+        <div class="locationCity" th:text="${location.city}"></div>
+        <div class="locationState" th:text="${location.state}"></div>
+        <div class="locationDeleteOrEdit">
+            <a th:href="@{/deleteLocation/{id}(id=${location.id})}" class="deleteButton">Usuń</a>
+            <a th:href="@{/editLocation/{id}(id=${location.id})}" class="editButton">Edytuj</a>
+        </div>
+        <div style="clear: both;"></div>
+    </div>
+    <div class="add">
+        <form th:action="@{/addLocation}" th:object="${location}" method="post">
+            <h3>Dodaj Lokację</h3>
+            <input placeholder="Id" class="locationId" type="number" th:field="*{id}"/>
+            <input placeholder="Państwo" class="locationCountry" type="text" th:field="*{country}"/>
+            <input placeholder="Ulica" class="locationStreet" type="text" th:field="*{street}"/>
+            <input placeholder="Kod pocztowy" class="locationPostalCode" type="text" th:field="*{postalCode}"/>
+            <input placeholder="Miasto" class="locationCity" type="text" th:field="*{city}"/>
+            <input placeholder="Stan" class="locationState" type="text" th:field="*{state}"/>
+            <div style="clear: both;"></div>
+            <input class="input" type="submit" value="Dodaj"/>
+            <input class="input" type="reset" value="Resetuj"/>
+        </form>
+    </div>
+</div>
+</body>
+</html>
