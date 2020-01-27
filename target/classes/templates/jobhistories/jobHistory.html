@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/jobhistories/jobHistory.css"/>
+</head>
+<body>
+<div class="container">
+    <div class="header"><h1>PROJEKT ZIIBD</h1></div>
+    <ul class="menu">
+        <li><a href="/countries">Państwa</a></li>
+        <li><a href="/departments">Departamenty</a></li>
+        <li><a href="/employees">Pracownicy</a></li>
+        <li><a href="/jobs">Prace</a></li>
+        <li><a href="/jobGrades">Stopnie Pracy</a></li>
+        <li><a href="/jobHistories">Historie Prac</a></li>
+        <li><a href="/locations">Lokacje</a></li>
+        <li><a href="/regions">Regiony</a></li>
+    </ul>
+    <div class="tableHeader"><h2>Historie Pracy</h2></div>
+
+    <div class="columnNames">
+        <div class="jobHistoryId">ID</div>
+        <div class="jobHistoryStartDate">DATA ROZPOCZĘCIA</div>
+        <div class="jobHistoryEndDate">DATA ZAKOŃCZENIA</div>
+        <div class="jobHistoryDept">DEPARTAMENT</div>
+        <div class="jobHistoryJob">PRACA</div>
+        <div style="clear: both;"></div>
+    </div>
+    <div class="result" th:each="jobhistory : ${jobhistories}">
+        <div class="jobHistoryId" th:text="${jobhistory.id}"></div>
+        <div class="jobHistoryStartDate" th:text="${jobhistory.startDate}"></div>
+        <div class="jobHistoryEndDate" th:text="${jobhistory.endDate}"></div>
+        <div class="jobHistoryDept" th:text="${jobhistory.dept}"></div>
+        <div class="jobHistoryJob" th:text="${jobhistory.job}"></div>
+        <div class="jobHistoryDeleteOrEdit">
+            <a th:href="@{/deleteJobHistory/{id}/{startDate}(id=${jobhistory.id},startDate=${jobhistory.startDate})}" class="deleteButton">Usuń</a>
+            <a th:href="@{/editJobHistory/{id}/{startDate}(id=${jobhistory.id},startDate=${jobhistory.startDate})}" class="editButton">Edytuj</a>
+        </div>
+        <div style="clear: both;"></div>
+    </div>
+    <div class="add">
+        <form th:action="@{/addJobHistory}" th:object="${jobhistory}" method="post">
+            <h3>Dodaj Historię Pracy</h3>
+            <input placeholder="Id" class="jobHistoryId" type="number" th:field="*{id}"/>
+            <input placeholder="Data rozpoczęcia" class="jobHistoryStartDate" type="date" th:field="*{startDate}"/>
+            <input placeholder="Data zakończenia" class="jobHistoryEndDate" type="date" th:field="*{endDate}"/>
+            <input placeholder="Departament" class="jobHistoryDept" type="number" th:field="*{dept}"/>
+            <input placeholder="Praca" class="jobHistoryJob" type="text" th:field="*{job}"/>
+            <div style="clear: both;"></div>
+            <input class="input" type="submit" value="Dodaj"/>
+            <input class="input" type="reset" value="Resetuj"/>
+        </form>
+    </div>
+</div>
+</body>
+</html>

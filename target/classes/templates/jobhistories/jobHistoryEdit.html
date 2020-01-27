@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/jobhistories/jobHistoryEdit.css"/>
+</head>
+<body>
+<div class="container">
+    <div class="header"><h1>PROJEKT ZIIBD</h1></div>
+    <div class="tableHeader"><h2>Edytuj Historię Pracy</h2></div>
+    <div class="edit">
+        <form th:action="@{/editJobHistory}" th:object="${retrievedjobhistory}" method="post">
+            <input placeholder="Id" class="jobHistoryId" type="number" th:field="*{id}" readonly/>
+            <input placeholder="Data rozpoczęcia" class="jobHistoryStartDate" type="date" th:field="*{startDate}" readonly/>
+            <input placeholder="Data zakończenia" class="jobHistoryEndDate" type="date" th:field="*{endDate}"/>
+            <input placeholder="Departament" class="jobHistoryDept" type="number" th:field="*{dept}"/>
+            <input placeholder="Praca" class="jobHistoryJob" type="text" th:field="*{job}"/>
+            <div style="clear: both;"></div>
+            <input class="input" type="submit" value="Zatwierdź"/>
+            <input class="input" type="reset" value="Resetuj"/>
+            <a th:href="@{/jobHistories}" class="comebackButton">Powrót</a>
+        </form>
+    </div>
+</div>
+</body>
+</html>
