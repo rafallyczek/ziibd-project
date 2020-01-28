@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Ziibd</title>
+    <link rel="stylesheet" href="/regions/regionEdit.css"/>
+</head>
+<body>
+<div class="container">
+    <div class="header"><h1>PROJEKT ZIIBD</h1></div>
+    <div class="tableHeader"><h2>Edytuj Region</h2></div>
+    <div class="edit">
+        <form th:action="@{/editRegion}" th:object="${retrievedregion}" method="post">
+            <input placeholder="Id" class="regionId" type="number" th:field="*{id}" readonly/>
+            <input placeholder="Region" class="regionName" type="text" th:field="*{reg}"/>
+            <div style="clear: both;"></div>
+            <input class="input" type="submit" value="Zatwierdź"/>
+            <input class="input" type="reset" value="Resetuj"/>
+            <a th:href="@{/regions}" class="comebackButton">Powrót</a>
+        </form>
+    </div>
+</div>
+</body>
+</html>

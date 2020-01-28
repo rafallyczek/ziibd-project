@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Ziibd</title>
+    <link rel="stylesheet" href="/regions/regions.css"/>
+</head>
+<body>
+<div class="container">
+    <div class="header"><h1>PROJEKT ZIIBD</h1></div>
+    <ul class="menu">
+        <li><a href="/countries">Państwa</a></li>
+        <li><a href="/departments">Departamenty</a></li>
+        <li><a href="/employees">Pracownicy</a></li>
+        <li><a href="/jobs">Prace</a></li>
+        <li><a href="/jobGrades">Stopnie Pracy</a></li>
+        <li><a href="/jobHistories">Historie Prac</a></li>
+        <li><a href="/locations">Lokacje</a></li>
+        <li><a href="/regions">Regiony</a></li>
+    </ul>
+    <div class="tableHeader"><h2>Regiony</h2></div>
+
+    <div class="columnNames">
+        <div class="regionId">ID</div>
+        <div class="regionName">REGION</div>
+        <div style="clear: both;"></div>
+    </div>
+    <div class="result" th:each="region : ${regions}">
+        <div class="regionId" th:text="${region.id}"></div>
+        <div class="regionName" th:text="${region.reg}"></div>
+        <div class="regionDeleteOrEdit">
+            <a th:href="@{/deleteRegion/{id}(id=${region.id})}" class="deleteButton">Usuń</a>
+            <a th:href="@{/editRegion/{id}(id=${region.id})}" class="editButton">Edytuj</a>
+        </div>
+        <div style="clear: both;"></div>
+    </div>
+    <div class="add">
+        <form th:action="@{/addRegion}" th:object="${region}" method="post">
+            <h3>Dodaj Region</h3>
+            <input placeholder="Id" class="regionId" type="number" th:field="*{id}"/>
+            <input placeholder="Region" class="regionName" type="text" th:field="*{reg}"/>
+            <div style="clear: both;"></div>
+            <input class="input" type="submit" value="Dodaj"/>
+            <input class="input" type="reset" value="Resetuj"/>
+        </form>
+    </div>
+</div>
+</body>
+</html>
