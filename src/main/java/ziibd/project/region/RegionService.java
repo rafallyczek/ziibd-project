@@ -26,12 +26,19 @@ public class RegionService {
 
     //Dodaj region
     public void addRegion(Region region){
+        RegionThread regionThread4 = new RegionThread(region,"addRegion(Service) RegionThread");
+        regionThread4.start();
         regionRepository.save(region);
     }
 
     //Zaktualizuj region
     public void updateRegion(Region region){
-        regionRepository.save(region);
+        RegionThread regionThread5 = new RegionThread(region,"updateRegion(Service) RegionThread");
+        regionThread5.start();
+        Region currentRegion = regionRepository.findById(region.getId()).get();
+        currentRegion.setId(region.getId());
+        currentRegion.setReg(region.getReg());
+        regionRepository.save(currentRegion);
     }
 
     //Usuń region

@@ -1,6 +1,16 @@
 package ziibd.project.jobhistory;
 
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
+
+@Component
+@Scope("prototype")
 public class JobHistoryThread extends Thread {
+
+    public static final String ANSI_RESET = "\u001B[0m";
+    public static final String ANSI_GREEN = "\u001B[32m";
+    public static final String ANSI_PURPLE = "\u001B[35m";
+    public static final String ANSI_CYAN = "\u001B[36m";
 
     JobHistory jobHistory;
 
@@ -11,14 +21,13 @@ public class JobHistoryThread extends Thread {
 
     @Override
     public void run() {
-        System.out.println("Thread "+getName()+" runs.");
+        System.out.println(ANSI_GREEN+"Thread "+getName()+" is running."+ANSI_RESET);
         System.out.println("Printing "+jobHistory+" field values:");
-        System.out.println("Job History Id: "+jobHistory.getId());
-        System.out.println("Job History Start Date: "+jobHistory.getStartDate());
-        System.out.println("Job History Department: "+jobHistory.getDept());
-        System.out.println("Job History Job: "+jobHistory.getJob());
-        System.out.println("Job History End Date: "+jobHistory.getEndDate());
-        System.out.println("----------------------------------");
+        System.out.println(ANSI_CYAN+getName()+ANSI_RESET+" Id: "+ANSI_PURPLE+jobHistory.getId()+ANSI_RESET);
+        System.out.println(ANSI_CYAN+getName()+ANSI_RESET+" Start Date: "+ANSI_PURPLE+jobHistory.getStartDate()+ANSI_RESET);
+        System.out.println(ANSI_CYAN+getName()+ANSI_RESET+" Department: "+ANSI_PURPLE+jobHistory.getDept()+ANSI_RESET);
+        System.out.println(ANSI_CYAN+getName()+ANSI_RESET+" Job: "+ANSI_PURPLE+jobHistory.getJob()+ANSI_RESET);
+        System.out.println(ANSI_CYAN+getName()+ANSI_RESET+" End Date: "+ANSI_PURPLE+jobHistory.getEndDate()+ANSI_RESET);
     }
 
 }

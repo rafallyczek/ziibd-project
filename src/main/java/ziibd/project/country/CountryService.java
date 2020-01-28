@@ -27,11 +27,15 @@ public class CountryService {
 
     //Dodaj państwo
     public void addCountry(Country country){
+        CountryThread countryThread4 = new CountryThread(country,"addCountry(Service) CountryThread");
+        countryThread4.start();
         countryRepository.save(country);
     }
 
     //Zaktualizuj państwo
     public void updateCountry(Country country){
+        CountryThread countryThread5 = new CountryThread(country,"updateCountry(Service) CountryThread");
+        countryThread5.start();
         Country currentCountry = countryRepository.findById(country.getId());
         currentCountry.setName(country.getName());
         currentCountry.setReg(country.getReg());

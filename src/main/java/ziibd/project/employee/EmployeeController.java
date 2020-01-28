@@ -14,8 +14,6 @@ public class EmployeeController {
     @Autowired
     private EmployeeService employeeService;
 
-    EmployeeThread employeeThread = null;
-
     //Zwróć wszystkich pracowników
     @RequestMapping("/employees")
     public String getEmployees(Model model) {
@@ -27,8 +25,8 @@ public class EmployeeController {
     //Dodaj pracownika
     @PostMapping("/addEmployee")
     public String addEmployee(@ModelAttribute("employee") Employee employee){
-        employeeThread = new EmployeeThread(employee,"addEmployeeThread");
-        employeeThread.start();
+        EmployeeThread employeeThread1 = new EmployeeThread(employee,"addEmployee(Controller) EmployeeThread");
+        employeeThread1.start();
         employeeService.addEmployee(employee);
         return "redirect:/employees";
     }
@@ -36,8 +34,8 @@ public class EmployeeController {
     //Pobierz i zapisz pracownika o zadanym id i zwróć widok edycji pracownika
     @RequestMapping("/editEmployee/{id}")
     public String updateEmployeeById(@PathVariable int id, Model model){
-        employeeThread = new EmployeeThread(employeeService.getEmployee(id),"editByIdEmployeeThread");
-        employeeThread.start();
+        EmployeeThread employeeThread2 = new EmployeeThread(employeeService.getEmployee(id),"updateEmployeeById(Controller) EmployeeThread");
+        employeeThread2.start();
         model.addAttribute("retrievedemployee",employeeService.getEmployee(id));
         return "employees/employeeEdit";
     }
@@ -45,8 +43,8 @@ public class EmployeeController {
     //Edytuj pracownika
     @PostMapping("/editEmployee")
     public String updateEmployee(@ModelAttribute("retrievedemployee") Employee employee){
-        employeeThread = new EmployeeThread(employee,"editEmployeeThread");
-        employeeThread.start();
+        EmployeeThread employeeThread3 = new EmployeeThread(employee,"updateEmployee(Controller) EmployeeThread");
+        employeeThread3.start();
         employeeService.updateEmployee(employee);
         return "redirect:/employees";
     }

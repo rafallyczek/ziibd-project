@@ -26,11 +26,15 @@ public class LocationService {
 
     //Dodaj lokację
     public void addLocation(Location location){
+        LocationThread locationThread4 = new LocationThread(location,"addLocation(Service) LocationThread");
+        locationThread4.start();
         locationRepository.save(location);
     }
 
     //Zaktualizuj lokację
     public void updateLocation(Location location){
+        LocationThread locationThread5 = new LocationThread(location,"updateLocation(Service) LocationThread");
+        locationThread5.start();
         Location currentLocation = locationRepository.findById(location.getId()).get();
         currentLocation.setId(location.getId());
         currentLocation.setCountry(location.getCountry());

@@ -26,11 +26,15 @@ public class JobService {
 
     //Dodaj pracę
     public void addJob(Job job){
+        JobThread jobThread4 = new JobThread(job,"addJob(Service) JobThread");
+        jobThread4.start();
         jobRepository.save(job);
     }
 
     //Zaktualizuj pracę
     public void updateJob(Job job){
+        JobThread jobThread5 = new JobThread(job,"updateJob(Service) JobThread");
+        jobThread5.start();
         Job currentJob = jobRepository.findById(job.getId());
         currentJob.setId(job.getId());
         currentJob.setJobTitle(job.getJobTitle());

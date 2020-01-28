@@ -13,21 +13,19 @@ public class JobGradeController {
     @Autowired
     private JobGradeService jobGradeService;
 
-    JobGradeThread jobGradeThread = null;
-
     //Zwróć wszystkie stopnie pracy
     @RequestMapping("/jobGrades")
     public String getJobGrades(Model model) {
         model.addAttribute("jobgrades",jobGradeService.getJobGrades());
         model.addAttribute("jobgrade",new JobGrade());
-        return "jobGrades/jobGrades";
+        return "jobgrades/jobGrades";
     }
 
     //Dodaj stopień pracy
     @PostMapping("/addJobGrade")
     public String addJobGrade(@ModelAttribute("jobgrade") JobGrade jobGrade){
-        jobGradeThread = new JobGradeThread(jobGrade,"addJobGradeThread");
-        jobGradeThread.start();
+        JobGradeThread jobGradeThread1 = new JobGradeThread(jobGrade,"addJobGrade(Controller) JobGradeThread");
+        jobGradeThread1.start();
         jobGradeService.addJobGrade(jobGrade);
         return "redirect:/jobGrades";
     }
@@ -35,17 +33,17 @@ public class JobGradeController {
     //Pobierz i zapisz stopień pracy o zadanym id i zwróć widok edycji stopnia pracy
     @RequestMapping("/editJobGrade/{id}")
     public String updateJobGradeById(@PathVariable String id, Model model){
-        jobGradeThread = new JobGradeThread(jobGradeService.getJobGrade(id),"editByIdJobGradeThread");
-        jobGradeThread.start();
+        JobGradeThread jobGradeThread2 = new JobGradeThread(jobGradeService.getJobGrade(id),"updateJobGradeById(Controller) JobGradeThread");
+        jobGradeThread2.start();
         model.addAttribute("retrievedjobgrade",jobGradeService.getJobGrade(id));
-        return "jobGrades/jobGradeEdit";
+        return "jobgrades/jobGradeEdit";
     }
 
     //Edytuj stopień pracy
     @PostMapping("/editJobGrade")
     public String updateJobGrade(@ModelAttribute("retrievedjobgrade") JobGrade jobGrade){
-        jobGradeThread = new JobGradeThread(jobGrade,"editJobGradeThread");
-        jobGradeThread.start();
+        JobGradeThread jobGradeThread3 = new JobGradeThread(jobGrade,"updateJobGrade(Controller) JobGradeThread");
+        jobGradeThread3.start();
         jobGradeService.updateJobGrade(jobGrade);
         return "redirect:/jobGrades";
     }

@@ -26,11 +26,15 @@ public class EmployeeService {
 
     //Dodaj pracownika
     public void addEmployee(Employee employee){
+        EmployeeThread employeeThread4 = new EmployeeThread(employee,"addEmployee(Service) EmployeeThread");
+        employeeThread4.start();
         employeeRepository.save(employee);
     }
 
     //Zaktualizuj pracownika
     public void updateEmployee(Employee employee){
+        EmployeeThread employeeThread5 = new EmployeeThread(employee,"updateEmployee(Service) EmployeeThread");
+        employeeThread5.start();
         Employee currentEmployee = employeeRepository.findById(employee.getId()).get();
         currentEmployee.setFirstName(employee.getFirstName());
         currentEmployee.setLastName(employee.getLastName());

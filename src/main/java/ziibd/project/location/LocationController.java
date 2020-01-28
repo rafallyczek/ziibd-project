@@ -16,8 +16,6 @@ public class LocationController {
     @Autowired
     private LocationService locationService;
 
-    LocationThread locationThread = null;
-
     //Zwróć wszystkie lokacje
     @RequestMapping("/locations")
     public String getLocations(Model model) {
@@ -29,8 +27,8 @@ public class LocationController {
     //Dodaj lokację
     @PostMapping("/addLocation")
     public String addLocation(@ModelAttribute("location") Location location){
-        locationThread = new LocationThread(location,"addLocationThread");
-        locationThread.start();
+        LocationThread locationThread1 = new LocationThread(location,"addLocation(Controller) LocationThread");
+        locationThread1.start();
         locationService.addLocation(location);
         return "redirect:/locations";
     }
@@ -38,8 +36,8 @@ public class LocationController {
     //Pobierz i zapisz lokację o zadanym id i zwróć widok edycji lokacji
     @RequestMapping("/editLocation/{id}")
     public String updateLocationById(@PathVariable int id, Model model){
-        locationThread = new LocationThread(locationService.getLocation(id),"editByIdLocationThread");
-        locationThread.start();
+        LocationThread locationThread2 = new LocationThread(locationService.getLocation(id),"updateLocationById(Controller) LocationThread");
+        locationThread2.start();
         model.addAttribute("retrievedlocation",locationService.getLocation(id));
         return "locations/locationEdit";
     }
@@ -47,8 +45,8 @@ public class LocationController {
     //Edytuj lokację
     @PostMapping("/editLocation")
     public String updateLocation(@ModelAttribute("retrievedlocation") Location location){
-        locationThread = new LocationThread(location,"editLocationThread");
-        locationThread.start();
+        LocationThread locationThread3 = new LocationThread(location,"updateLocation(Controller) LocationThread");
+        locationThread3.start();
         locationService.updateLocation(location);
         return "redirect:/locations";
     }

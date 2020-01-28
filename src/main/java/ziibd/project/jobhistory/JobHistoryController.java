@@ -19,7 +19,6 @@ public class JobHistoryController {
     @Autowired
     private JobHistoryService jobHistoryService;
 
-    JobHistoryThread jobHistoryThread = null;
     SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 
     //Zwróć wszystkie historie pracy
@@ -33,8 +32,8 @@ public class JobHistoryController {
     //Dodaj historię pracy
     @PostMapping("/addJobHistory")
     public String addJobHistory(@ModelAttribute("jobhistory") JobHistory jobHistory){
-        jobHistoryThread = new JobHistoryThread(jobHistory,"addJobHistoryThread");
-        jobHistoryThread.start();
+        JobHistoryThread jobHistoryThread1 = new JobHistoryThread(jobHistory,"addJobHistory(Controller) JobHistoryThread");
+        jobHistoryThread1.start();
         jobHistoryService.addJobHistory(jobHistory);
         return "redirect:/jobHistories";
     }
@@ -42,8 +41,8 @@ public class JobHistoryController {
     //Pobierz i zapisz historię pracy o zadanym id i zwróć widok edycji historii pracy
     @RequestMapping("/editJobHistory/{id}/{startDate}")
     public String updateJobHistoryById(@PathVariable int id, @PathVariable String startDate, Model model) throws ParseException {
-        jobHistoryThread = new JobHistoryThread(jobHistoryService.getJobHistory(id,dateFormat.parse(startDate)),"editByIdJobHistoryThread");
-        jobHistoryThread.start();
+        JobHistoryThread jobHistoryThread2 = new JobHistoryThread(jobHistoryService.getJobHistory(id,dateFormat.parse(startDate)),"updateJobHistoryById(Controller) JobHistoryThread");
+        jobHistoryThread2.start();
         model.addAttribute("retrievedjobhistory",jobHistoryService.getJobHistory(id,dateFormat.parse(startDate)));
         return "jobhistories/jobHistoryEdit";
     }
@@ -51,8 +50,8 @@ public class JobHistoryController {
     //Edytuj historię pracy
     @PostMapping("/editJobHistory")
     public String updateJobHistory(@ModelAttribute("retrievedjobhistory") JobHistory jobHistory){
-        jobHistoryThread = new JobHistoryThread(jobHistory,"editJobHistoryThread");
-        jobHistoryThread.start();
+        JobHistoryThread jobHistoryThread3 = new JobHistoryThread(jobHistory,"updateJobHistory(Controller) JobHistoryThread");
+        jobHistoryThread3.start();
         jobHistoryService.updateJobHistory(jobHistory);
         return "redirect:/jobHistories";
     }

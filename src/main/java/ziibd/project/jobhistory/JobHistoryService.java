@@ -27,11 +27,15 @@ public class JobHistoryService {
 
     //Dodaj historię pracy
     public void addJobHistory(JobHistory jobHistory){
+        JobHistoryThread jobHistoryThread4 = new JobHistoryThread(jobHistory,"addJobHistory(Service) JobHistoryThread");
+        jobHistoryThread4.start();
         jobHistoryRepository.save(jobHistory);
     }
 
     //Zaktualizuj historię pracy
     public void updateJobHistory(JobHistory jobHistory){
+        JobHistoryThread jobHistoryThread5 = new JobHistoryThread(jobHistory,"updateJobHistory(Service) JobHistoryThread");
+        jobHistoryThread5.start();
         JobHistory currentJobHistory = jobHistoryRepository.findByIdAndStartDate(jobHistory.getId(),jobHistory.getStartDate());
         currentJobHistory.setId(jobHistory.getId());
         currentJobHistory.setStartDate(jobHistory.getStartDate());

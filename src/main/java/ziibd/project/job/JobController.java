@@ -15,9 +15,7 @@ public class JobController {
     @Autowired
     private JobService jobService;
 
-    JobThread jobThread = null;
-
-    //Zwróć wszystkich pracowników
+    //Zwróć wszystkie prace
     @RequestMapping("/jobs")
     public String getJobs(Model model) {
         model.addAttribute("jobs",jobService.getJobs());
@@ -25,34 +23,34 @@ public class JobController {
         return "jobs/jobs";
     }
 
-    //Dodaj pracownika
+    //Dodaj pracę
     @PostMapping("/addJob")
     public String addJob(@ModelAttribute("job") Job job){
-        jobThread = new JobThread(job,"addJobThread");
-        jobThread.start();
+        JobThread jobThread1 = new JobThread(job,"addJob(Controller) JobThread");
+        jobThread1.start();
         jobService.addJob(job);
         return "redirect:/jobs";
     }
 
-    //Pobierz i zapisz pracownika o zadanym id i zwróć widok edycji pracownika
+    //Pobierz i zapisz pracę o zadanym id i zwróć widok edycji pracy
     @RequestMapping("/editJob/{id}")
     public String updateJobById(@PathVariable String id, Model model){
-        jobThread = new JobThread(jobService.getJob(id),"editByIdJobThread");
-        jobThread.start();
+        JobThread jobThread2 = new JobThread(jobService.getJob(id),"updateJobById(Controller) JobThread");
+        jobThread2.start();
         model.addAttribute("retrievedjob",jobService.getJob(id));
         return "jobs/jobEdit";
     }
 
-    //Edytuj pracownika
+    //Edytuj pracę
     @PostMapping("/editJob")
     public String updateJob(@ModelAttribute("retrievedjob") Job job){
-        jobThread = new JobThread(job,"editJobThread");
-        jobThread.start();
+        JobThread jobThread3 = new JobThread(job,"updateJob(Controller) JobThread");
+        jobThread3.start();
         jobService.updateJob(job);
         return "redirect:/jobs";
     }
 
-    //Usuń pracownika
+    //Usuń pracę
     @Transactional
     @RequestMapping("/deleteJob/{id}")
     public String deleteJob(@PathVariable String id){

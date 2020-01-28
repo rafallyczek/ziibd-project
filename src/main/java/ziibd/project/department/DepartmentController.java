@@ -14,8 +14,6 @@ public class DepartmentController {
     @Autowired
     private DepartmentService departmentService;
 
-    DepartmentThread departmentThread = null;
-
     //Zwróć wszystkie departamenty
     @RequestMapping("/departments")
     public String getDepartments(Model model) {
@@ -27,8 +25,8 @@ public class DepartmentController {
     //Dodaj departament
     @PostMapping("/addDepartment")
     public String addDepartment(@ModelAttribute("department") Department department){
-        departmentThread = new DepartmentThread(department,"addDepartmentThread");
-        departmentThread.start();
+        DepartmentThread departmentThread1 = new DepartmentThread(department,"addDepartment(Controller) DepartmentThread");
+        departmentThread1.start();
         departmentService.addDepartment(department);
         return "redirect:/departments";
     }
@@ -36,8 +34,8 @@ public class DepartmentController {
     //Pobierz i zapisz departament o zadanym id i zwróć widok edycji departamentu
     @RequestMapping("/editDepartment/{id}")
     public String updateDepartmentById(@PathVariable int id, Model model){
-        departmentThread = new DepartmentThread(departmentService.getDepartment(id),"editByIdDepartmentThread");
-        departmentThread.start();
+        DepartmentThread departmentThread2 = new DepartmentThread(departmentService.getDepartment(id),"updateDepartmentById(Controller) DepartmentThread");
+        departmentThread2.start();
         model.addAttribute("retrieveddepartment",departmentService.getDepartment(id));
         return "departments/departmentEdit";
     }
@@ -45,8 +43,8 @@ public class DepartmentController {
     //Edytuj departament
     @PostMapping("/editDepartment")
     public String updateDepartment(@ModelAttribute("retrieveddepartment") Department department){
-        departmentThread = new DepartmentThread(department,"editDepartmentThread");
-        departmentThread.start();
+        DepartmentThread departmentThread3 = new DepartmentThread(department,"updateDepartment(Controller) DepartmentThread");
+        departmentThread3.start();
         departmentService.updateDepartment(department);
         return "redirect:/departments";
     }

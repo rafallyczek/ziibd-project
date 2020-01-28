@@ -26,11 +26,15 @@ public class JobGradeService {
 
     //Dodaj stopień pracy
     public void addJobGrade(JobGrade jobGrade){
+        JobGradeThread jobGradeThread4 = new JobGradeThread(jobGrade,"addJobGrade(Service) JobGradeThread");
+        jobGradeThread4.start();
         jobGradeRepository.save(jobGrade);
     }
 
     //Zaktualizuj stopień pracy
     public void updateJobGrade(JobGrade jobGrade){
+        JobGradeThread jobGradeThread5 = new JobGradeThread(jobGrade,"updateJobGrade(Service) JobGradeThread");
+        jobGradeThread5.start();
         JobGrade currentJobGrade = jobGradeRepository.findById(jobGrade.getId());
         currentJobGrade.setId(jobGrade.getId());
         currentJobGrade.setLowestSal(jobGrade.getLowestSal());

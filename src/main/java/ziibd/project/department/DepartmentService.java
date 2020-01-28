@@ -26,11 +26,15 @@ public class DepartmentService {
 
     //Dodaj departament
     public void addDepartment(Department department){
+        DepartmentThread departmentThread4 = new DepartmentThread(department,"addDepartment(Service) DepartmentThread");
+        departmentThread4.start();
         departmentRepository.save(department);
     }
 
     //Zaktualizuj departament
     public void updateDepartment(Department department){
+        DepartmentThread departmentThread5 = new DepartmentThread(department,"updateDepartment(Service) DepartmentThread");
+        departmentThread5.start();
         Department currentDepartment = departmentRepository.findById(department.getId()).get();
         currentDepartment.setName(department.getName());
         currentDepartment.setLoc(department.getLoc());
