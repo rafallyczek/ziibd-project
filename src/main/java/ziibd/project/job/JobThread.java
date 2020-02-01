@@ -23,10 +23,10 @@ public class JobThread extends Thread {
     public void run() {
         System.out.println(ANSI_GREEN+"Thread "+getName()+" is running."+ANSI_RESET);
         System.out.println("Printing "+job+" field values:");
-        System.out.println(ANSI_CYAN+getName()+ANSI_RESET+" Id: "+ANSI_PURPLE+job.getId()+ANSI_RESET);
-        System.out.println(ANSI_CYAN+getName()+ANSI_RESET+" Title: "+ANSI_PURPLE+job.getJobTitle()+ANSI_RESET);
-        System.out.println(ANSI_CYAN+getName()+ANSI_RESET+" Minimal Salary: "+ANSI_PURPLE+job.getMinSal()+ANSI_RESET);
-        System.out.println(ANSI_CYAN+getName()+ANSI_RESET+" Maximum Salary: "+ANSI_PURPLE+job.getMaxSal()+ANSI_RESET);
+        System.out.println(ANSI_CYAN+getName()+ANSI_RESET+" Id: "+ANSI_PURPLE+job.getId()+ANSI_RESET+" Type: "+ANSI_PURPLE+((job.getId()==null)?null:job.getId().getClass().getName())+ANSI_RESET);
+        System.out.println(ANSI_CYAN+getName()+ANSI_RESET+" Title: "+ANSI_PURPLE+job.getJobTitle()+ANSI_RESET+" Type: "+ANSI_PURPLE+((job.getJobTitle()==null)?null:job.getJobTitle().getClass().getName())+ANSI_RESET);
+        System.out.println(ANSI_CYAN+getName()+ANSI_RESET+" Minimal Salary: "+ANSI_PURPLE+job.getMinSal()+ANSI_RESET+" Type: "+ANSI_PURPLE+((job.getMinSal()==null)?null:job.getMinSal().getClass().getName())+ANSI_RESET);
+        System.out.println(ANSI_CYAN+getName()+ANSI_RESET+" Maximum Salary: "+ANSI_PURPLE+job.getMaxSal()+ANSI_RESET+" Type: "+ANSI_PURPLE+((job.getMaxSal()==null)?null:job.getMaxSal().getClass().getName())+ANSI_RESET);
     }
 
 }

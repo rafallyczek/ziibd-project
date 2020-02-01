@@ -23,10 +23,10 @@ public class DepartmentThread extends Thread {
     public void run() {
         System.out.println(ANSI_GREEN+"Thread "+getName()+" is running."+ANSI_RESET);
         System.out.println("Printing "+department+" field values:");
-        System.out.println(ANSI_CYAN+getName()+ANSI_RESET+" Id: "+ANSI_PURPLE+department.getId()+ANSI_RESET);
-        System.out.println(ANSI_CYAN+getName()+ANSI_RESET+" Name: "+ANSI_PURPLE+department.getName()+ANSI_RESET);
-        System.out.println(ANSI_CYAN+getName()+ANSI_RESET+" Location: "+ANSI_PURPLE+department.getLoc()+ANSI_RESET);
-        System.out.println(ANSI_CYAN+getName()+ANSI_RESET+" Manager: "+ANSI_PURPLE+department.getMgr()+ANSI_RESET);
+        System.out.println(ANSI_CYAN+getName()+ANSI_RESET+" Id: "+ANSI_PURPLE+department.getId()+ANSI_RESET+" Type: "+ANSI_PURPLE+((department.getId()==null)?null:department.getId().getClass().getName())+ANSI_RESET);
+        System.out.println(ANSI_CYAN+getName()+ANSI_RESET+" Name: "+ANSI_PURPLE+department.getName()+ANSI_RESET+" Type: "+ANSI_PURPLE+((department.getName()==null)?null:department.getName().getClass().getName())+ANSI_RESET);
+        System.out.println(ANSI_CYAN+getName()+ANSI_RESET+" Location: "+ANSI_PURPLE+department.getLoc()+ANSI_RESET+" Type: "+ANSI_PURPLE+((department.getLoc()==null)?null:department.getLoc().getClass().getName())+ANSI_RESET);
+        System.out.println(ANSI_CYAN+getName()+ANSI_RESET+" Manager: "+ANSI_PURPLE+department.getMgr()+ANSI_RESET+" Type: "+ANSI_PURPLE+((department.getMgr()==null)?null:department.getMgr().getClass().getName())+ANSI_RESET);
     }
 
 }

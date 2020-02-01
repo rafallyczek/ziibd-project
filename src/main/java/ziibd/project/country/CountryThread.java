@@ -23,9 +23,9 @@ public class CountryThread extends Thread {
     public void run() {
         System.out.println(ANSI_GREEN+"Thread "+getName()+" is running."+ANSI_RESET);
         System.out.println("Printing "+country+" field values:");
-        System.out.println(ANSI_CYAN+getName()+ANSI_RESET+" Id: "+ANSI_PURPLE+country.getId()+ANSI_RESET);
-        System.out.println(ANSI_CYAN+getName()+ANSI_RESET+" Name: "+ANSI_PURPLE+country.getName()+ANSI_RESET);
-        System.out.println(ANSI_CYAN+getName()+ANSI_RESET+" Region: "+ANSI_PURPLE+country.getReg()+ANSI_RESET);
+        System.out.println(ANSI_CYAN+getName()+ANSI_RESET+" Id: "+ANSI_PURPLE+country.getId()+ANSI_RESET+" Type: "+ANSI_PURPLE+((country.getId()==null)?null:country.getId().getClass().getName())+ANSI_RESET);
+        System.out.println(ANSI_CYAN+getName()+ANSI_RESET+" Name: "+ANSI_PURPLE+country.getName()+ANSI_RESET+" Type: "+ANSI_PURPLE+((country.getName()==null)?null:country.getName().getClass().getName())+ANSI_RESET);
+        System.out.println(ANSI_CYAN+getName()+ANSI_RESET+" Region: "+ANSI_PURPLE+country.getReg()+ANSI_RESET+" Type: "+ANSI_PURPLE+((country.getReg()==null)?null:country.getReg().getClass().getName())+ANSI_RESET);
     }
 
 }

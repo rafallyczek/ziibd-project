@@ -23,8 +23,8 @@ public class RegionThread extends Thread {
     public void run() {
         System.out.println(ANSI_GREEN+"Thread "+getName()+" is running."+ANSI_RESET);
         System.out.println("Printing "+region+" field values:");
-        System.out.println(ANSI_CYAN+getName()+ANSI_RESET+" Id: "+ANSI_PURPLE+region.getId()+ANSI_RESET);
-        System.out.println(ANSI_CYAN+getName()+ANSI_RESET+" Name: "+ANSI_PURPLE+region.getReg()+ANSI_RESET);
+        System.out.println(ANSI_CYAN+getName()+ANSI_RESET+" Id: "+ANSI_PURPLE+region.getId()+ANSI_RESET+" Type: "+ANSI_PURPLE+((region.getId()==null)?null:region.getId().getClass().getName())+ANSI_RESET);
+        System.out.println(ANSI_CYAN+getName()+ANSI_RESET+" Name: "+ANSI_PURPLE+region.getReg()+ANSI_RESET+" Type: "+ANSI_PURPLE+((region.getReg()==null)?null:region.getReg().getClass().getName())+ANSI_RESET);
     }
 
 }
