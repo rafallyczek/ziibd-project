@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Ziibd</title>
+    <link rel="stylesheet" type="text/css" href="/login.css"/>
+</head>
+<body>
+<div class="container">
+    <div class="header"><h1>PROJEKT ZIIBD</h1></div>
+    <div class="main">
+        <h2>Logowanie</h2>
+        <div th:if="${param.error}">
+            <p class="error">Nieprawidłowy login lub hasło.</p>
+        </div>
+        <div th:if="${param.logout}">
+            <p class="info">Wylogowano pomyślnie.</p>
+        </div>
+        <form th:action="@{/login}" method="post">
+
+            <div class="formInputs"><p>Nazwa użytkownika:</p></div> <div class="formInputs"><input type="text" name="username"/></div><div style="clear: both;"></div>
+            <div class="formInputs"><p>Hasło:</p></div> <div class="formInputs"><input type="password" name="password"/></div><div style="clear: both;"></div>
+            <input class="submit" type="submit" value="Zaloguj"/>
+
+        </form>
+    </div>
+</div>
+</body>
+</html>
