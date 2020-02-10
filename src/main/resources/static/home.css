@@ -21,21 +21,43 @@ h2{
     padding: 10px;
     border-bottom: 1px solid #202020;
 }
-a{
+.menu{
+    width: 1000px;
+    background-color: #404040;
+    margin: 0 0 10px 0;
+    list-style-type: none;
+    padding: 0;
+    font-size: 0;
+}
+.menu > li{
+    list-style-type: none;
+    display: inline-block;
+    width: 114px;
+    height: 20px;
+    padding: 8px 5px 5px 5px;
+    font-size: 15px;
+    border-right: 1px dashed #202020;
+    text-align: center;
+    cursor: pointer;
+}
+.menu > li:last-child{
+    border-right: none;
+}
+.menu > li:hover{
     background-color: #303030;
+}
+.menuPart:last-child{
+    border-right: none;
+}
+.tableHeader{
+    width: 980px;
+    background-color: #404040;
+    padding: 10px;
+    margin-bottom: 5px;
+}
+a{
     text-decoration: none;
     color: white;
-    padding: 5px;
-    text-align: center;
-    display: block;
-    margin: 20px auto 10px auto;
-    width: 100px;
-    cursor: pointer;
-    border-radius: 5px;
-}
-a:hover{
-    background-color: #b52626;
-    text-shadow: 1px 1px black;
 }
 .main{
     width: 980px;
@@ -43,9 +65,9 @@ a:hover{
     padding: 10px;
     margin-bottom: 5px;
 }
-.info{
+.hello{
     text-align: center;
-    color: lightcoral;
+    color: lightskyblue;
 }
 .logout{
     padding: 7px;

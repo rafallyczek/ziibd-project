@@ -197,3 +197,19 @@ a{
     text-decoration: none;
     color: white;
 }
+.logout{
+    padding: 7px;
+    border: none;
+    text-align: center;
+    background-color: #303030;
+    border-radius: 5px;
+    color: white;
+    position: fixed;
+    right: 10px;
+    top: 10px;
+    cursor: pointer;
+}
+.logout:hover{
+    background-color: #2476d4;
+    text-shadow: 1px 1px black;
+}
