@@ -1,7 +1,5 @@
 # ziibd-springproject
-Simple application that fetches data from oracle database and performs CRUD operations.
+Simple application that fetches data from Oracle database and performs CRUD operations. Application was created for educational purposes and database was provided by university.
 ## Features
-* Java Threads used for field value control (help with debugging CRUD errors: update and add)
 * Login with Spring Security
-* ANSI escape codes used for coloring console output
 * CRUD operations performed with JPA's CrudRepository
