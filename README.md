@@ -1,5 +1,5 @@
 # Ziibd-springproject
-Simple application that fetches data from Oracle Database and performs CRUD operations. Application was created for educational purposes and database was provided by university.
+Simple application that fetches data from Oracle Database and performs CRUD operations. Application was created for educational purposes and database was provided by university. It is intended to be used with tables from university's database.
 ## Technologies
 * Spring
 * Spring Boot
