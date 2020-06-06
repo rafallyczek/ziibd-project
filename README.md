@@ -7,5 +7,5 @@ Simple application that fetches data from Oracle Database and performs CRUD oper
 * Spring Data JPA
 * Thymeleaf
 ## Features
-* CRUD operations performed on Oracle Database (viewing dables, adding new data, deleting data, updating data)
+* CRUD operations performed on Oracle Database (reading data from tables, adding new data, deleting data, updating data)
 * Access restrictions (Application protected with spring Security)
